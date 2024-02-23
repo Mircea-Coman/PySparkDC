@@ -16,17 +16,15 @@ index_dict = {
     'timestamp':              [21,  'Timestamp',            's',    'normal']
 }
 
-
-
 data = Data.read_from_files(index_dict, [file_1, file_2])
 print(data.temp_A.name, data.temp_A.unit)
 
 plt.figure(figsize = (13, 8))
-plt.plot(data.timestamp,  data.temp_A)
-plt.plot(data.timestamp,  data.temp_B)
-plt.plot(data.timestamp,  data.temp_C)
-plt.plot(data.timestamp,  data.temp_D)
-plt.plot(data.timestamp,  data.temp_E)
-plt.plot(data.timestamp,  data.temp_F)
+plt.plot(data.timestamp.values,  data.temp_A.values)
+plt.plot(data.timestamp.values,  data.temp_B.values)
+plt.plot(data.timestamp.values,  data.temp_C.values)
+plt.plot(data.timestamp.values,  data.temp_D.values)
+plt.plot(data.timestamp.values,  data.temp_E.values)
+plt.plot(data.timestamp.values,  data.temp_F.values)
 
 plt.show()
