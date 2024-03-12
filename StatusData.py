@@ -12,13 +12,14 @@ class StatusData(Data):
         super().__init__(*args, structure = structure)
 
     @staticmethod
-    def read_from_files(file_paths, header = 0, delimiter = '\t', structure = DEFAULT_TEMPERATURE_STRUCTURE):
-        data = Data.read_from_files(file_paths, header = header, delimiter = delimiter, structure = DEFAULT_TEMPERATURE_STRUCTURE)
+    def read_from_files(file_paths, header = None, delimiter = '\t', engine = 'c', skiprows = 0, structure = DEFAULT_TEMPERATURE_STRUCTURE):
+        data = Data.read_from_files(file_paths, header = header, delimiter = delimiter, engine = engine, skiprows = skiprows, structure = DEFAULT_TEMPERATURE_STRUCTURE)
         temp_data = StatusData(data.df, data.label_dict, data.unit_dict, data.concatenation_type_dict)
         return data
 
     @staticmethod
-    def read_from_folder_between_timestamps(folder_path, timestamp_limits, timezone = "Europe/Stockholm", descending_search = True, header = 0, delimiter = '\t', structure = DEFAULT_TEMPERATURE_STRUCTURE):
+    def read_from_folder_between_timestamps(folder_path, timestamp_limits, timezone = "Europe/Stockholm",\
+     descending_search = True, header = None, delimiter = '\t', skiprows = 0, engine = 'c', structure = DEFAULT_TEMPERATURE_STRUCTURE):
         files = os.listdir(folder_path) # get all files from specified folder
 
         n_files = len(files)
@@ -61,7 +62,8 @@ class StatusData(Data):
 
         selected_files_full_path = [os.path.join(folder_path, file) for file in selected_files] #join path with folder
         selected_files_full_path.sort(reverse = False) # sort in ascending order
-        status_data_full = StatusData.read_from_files(selected_files_full_path, header = header, delimiter = delimiter, structure = structure) # read the files
+        status_data_full = StatusData.read_from_files(selected_files_full_path, header = header, delimiter = delimiter, engine = engine, \
+         skiprows = skiprows, structure = structure) # read the files
 
         #finally, remove the data outside the required range
         status_data_full.df = status_data_full.df[status_data_full.df['timestamp'].between(timestamp_limits[0] + LABVIEW_TIMESTAMP_OFFSET, timestamp_limits[1] + LABVIEW_TIMESTAMP_OFFSET)]
@@ -69,10 +71,12 @@ class StatusData(Data):
 
 
     @staticmethod
-    def read_from_folder_between_datetimes(folder_path, datetime_limits, time_format = '%Y%m%d-%H%M%S', timezone = "Europe/Stockholm", descending_search = True, header = 0, delimiter = '\t', structure = DEFAULT_TEMPERATURE_STRUCTURE):
+    def read_from_folder_between_datetimes(folder_path, datetime_limits, time_format = '%Y%m%d-%H%M%S', timezone = "Europe/Stockholm", \
+    descending_search = True, header = None, delimiter = '\t', skiprows = 0, engine = 'c', structure = DEFAULT_TEMPERATURE_STRUCTURE):
         tzinfo = ZoneInfo(timezone)
         timestamp_limit_lower = time.mktime(datetime.datetime.strptime(datetime_limits[0], time_format).replace(tzinfo=tzinfo).timetuple())
         timestamp_limit_upper = time.mktime(datetime.datetime.strptime(datetime_limits[1], time_format).replace(tzinfo=tzinfo).timetuple())
         timestamp_limits = [timestamp_limit_lower, timestamp_limit_upper]
         print(timestamp_limits)
-        return StatusData.read_from_folder_between_timestamps(folder_path, timestamp_limits, timezone = timezone, descending_search = descending_search, header = header, delimiter = delimiter, structure = structure)
+        return StatusData.read_from_folder_between_timestamps(folder_path, timestamp_limits, timezone = timezone, descending_search = descending_search, \
+         header = header, delimiter = delimiter, skiprows = skiprows, engine = engine, structure = structure)

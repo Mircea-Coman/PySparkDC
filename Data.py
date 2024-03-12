@@ -95,8 +95,8 @@ class Data:
         Returns
         -------
         file_separators: numpy.ndarray
-                         file_separators[i, 0] - the start of data from a specified file
-                         file_separators[i, 1] - the end of data from a specified file
+                         file_separators[i, 0] - the index corresponding to the start of data from a specified file
+                         file_separators[i, 1] - the index corresponding to the end of data from a specified file
         """
 
         files = self.df.file.unique()
@@ -193,7 +193,7 @@ class Data:
 
 
     @staticmethod
-    def read_from_files(file_paths, header = 0, delimiter = '\t', structure = DEFAULT_TEMPERATURE_STRUCTURE):
+    def read_from_files(file_paths, header = None, delimiter = '\t', engine = 'c', skiprows = 0, structure = DEFAULT_TEMPERATURE_STRUCTURE):
         """
         Reads data from multiple files
         Parameters
@@ -206,22 +206,28 @@ class Data:
                         The delimiter used in the file. Default: '\t'
         structure:      numpy array, optional
                         The structure of the data. For each data field, the structure is the following: [column name, full label, unit, concatenation type]
-
+        engine:         str, optional
+                        Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine. Default: c
 
         Returns
         -------
         data:   Data
                 Data object corresponding to the data read from the file_paths
         """
-
         dfs = []
         n_files = len(file_paths)
         i = 0
         prev_file_end_index = 0
         for file_path in file_paths:
-            new_df = pd.read_csv(file_path, delimiter=delimiter, names = structure[:, 0])
+            new_df = pd.read_csv(file_path, engine = engine,  index_col=False, header = header, skiprows = skiprows, delimiter = delimiter, names = structure[:, 0])
+            additive_columns = np.where(structure[:, -1] == 'additive')[0]
+            if i != 0:
+                last_values_additive_columns = dfs[i-1].iloc[-1, additive_columns]
+                new_df.iloc[:, additive_columns] += last_values_additive_columns
             col_len = new_df.shape[1]
             new_df.insert(col_len, "file", file_path, True)
+            new_df.insert(col_len+1, "file_id", i, True)
+
             dfs.append(new_df)
             n_points = new_df.shape[0]
             prev_file_end_index = prev_file_end_index + n_points
