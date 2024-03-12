@@ -1,6 +1,28 @@
 import numpy as np
 
-DEFAULT_TEMPERATURE_FILE = np.array([
+LABVIEW_TIMESTAMP_OFFSET = 2082844800
+
+DEFAULT_TEMPERATURE_STYLES = {
+    'temp_A':       ['crimson',                      'solid'],
+    'temp_B':       ['xkcd:pumpkin',                 'solid'],
+    'temp_C':       ['xkcd:ultramarine',             'solid'],
+    'temp_D':       ['xkcd:purply',                  'solid'],
+    'temp_E':       ['xkcd:turquoise blue',          'solid'],
+    'temp_F':       ['black',                        'solid'],
+
+    'vacuum_1':     ['xkcd:light olive green',      'solid'],
+    'vacuum_2':     ['xkcd:dull yellow',            'solid'],
+
+    'capacitance':  ['black',                       'dotted'],
+
+    'heater_1':       ['gray',                        'solid'],
+
+    'setpoint':     ['xkcd:ultramarine',            'dotted'],
+
+
+}
+
+DEFAULT_TEMPERATURE_STRUCTURE = np.array([
     ['temp_A',              'Temperature CH A',                     'K',        'normal'],
     ['temp_B',              'Temperature CH B',                     'K',        'normal'],
     ['temp_C',              'Temperature CH C',                     'K',        'normal'],
