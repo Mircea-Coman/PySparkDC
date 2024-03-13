@@ -4,6 +4,10 @@ import os
 import time
 import datetime
 from zoneinfo import ZoneInfo
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+from matplotlib.dates import DateFormatter
+
 from default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_TEMPERATURE_STYLES, LABVIEW_TIMESTAMP_OFFSET
 from Data import Data
 
@@ -11,11 +15,46 @@ class StatusData(Data):
     def __init__(self, *args, structure = DEFAULT_TEMPERATURE_STRUCTURE):
         super().__init__(*args, structure = structure)
 
+    def plot_status(self, keys, x_key = 'timestamp', plot_datetime = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
+    ax = None, figsize = (13, 8), style_dict = DEFAULT_TEMPERATURE_STYLES):
+        file_separators = self.file_separators
+        n_files = file_separators.shape[0]
+        n_keys = len(keys)
+
+        #get colors
+        color_cycle = plt.rcParams['axes.prop_cycle'].by_key()['color']
+        colors = []
+        linestyles = []
+        k = 0
+        for i in range(0, n_keys):
+            if keys[i] in style_dict: # if the style of the key is specified in style_dict
+                colors.append(style_dict[keys[i]][0])
+                linestyles.append(style_dict[keys[i]][1])
+            else: # otherwise, use the next color from the color cycle
+                colors.append(color_cycle[k%len(color_cycle)])
+                linestyles.append('dashed')
+                k += 1
+        x_data = self.__fix_gaps_between_files__(x_key)
+
+        #make the plot
+        if ax is None:
+            fig, ax = plt.subplots(figsize = (13, 8))
+
+        for i in range(0, n_keys):
+            self.plot(keys[i], x_key = x_key, plot_datetime = plot_datetime, date_format = date_format, timezone = timezone, ax = ax, \
+            color = colors[i], linestyle = linestyles[i], label = self.label_dict[keys[i]] )
+
+        ax.legend()
+
+        return ax
+
+
     @staticmethod
     def read_from_files(file_paths, header = None, delimiter = '\t', engine = 'c', skiprows = 0, structure = DEFAULT_TEMPERATURE_STRUCTURE):
-        data = Data.read_from_files(file_paths, header = header, delimiter = delimiter, engine = engine, skiprows = skiprows, structure = DEFAULT_TEMPERATURE_STRUCTURE)
+        data = Data.read_from_files(file_paths, header = header, delimiter = delimiter, engine = engine, skiprows = skiprows, structure = structure)
         temp_data = StatusData(data.df, data.label_dict, data.unit_dict, data.concatenation_type_dict)
-        return data
+        temp_data.df.loc[:, 'timestamp'] = (temp_data.df.loc[:, 'timestamp'] - LABVIEW_TIMESTAMP_OFFSET)
+        return temp_data
 
     @staticmethod
     def read_from_folder_between_timestamps(folder_path, timestamp_limits, timezone = "Europe/Stockholm",\
@@ -66,7 +105,7 @@ class StatusData(Data):
          skiprows = skiprows, structure = structure) # read the files
 
         #finally, remove the data outside the required range
-        status_data_full.df = status_data_full.df[status_data_full.df['timestamp'].between(timestamp_limits[0] + LABVIEW_TIMESTAMP_OFFSET, timestamp_limits[1] + LABVIEW_TIMESTAMP_OFFSET)]
+        status_data_full.remove_data_timestamp_range(timestamp_limits)
         return status_data_full
 
 
@@ -77,6 +116,5 @@ class StatusData(Data):
         timestamp_limit_lower = time.mktime(datetime.datetime.strptime(datetime_limits[0], time_format).replace(tzinfo=tzinfo).timetuple())
         timestamp_limit_upper = time.mktime(datetime.datetime.strptime(datetime_limits[1], time_format).replace(tzinfo=tzinfo).timetuple())
         timestamp_limits = [timestamp_limit_lower, timestamp_limit_upper]
-        print(timestamp_limits)
         return StatusData.read_from_folder_between_timestamps(folder_path, timestamp_limits, timezone = timezone, descending_search = descending_search, \
          header = header, delimiter = delimiter, skiprows = skiprows, engine = engine, structure = structure)

@@ -109,3 +109,11 @@ DEFAULT_CONDITIONING_STRUCTURE = np.array([
     ['BDR_CG',                  'Goal Conditioning BDR',                '',         'normal'],
     ['conditioning_mode',       'Conditioning mode',                    '',         'normal']
 ])
+
+DEFAULT_RGA_STRUCTURE = np.array([
+    ['cycle_no',                'Mode',                                 '',         'normal'],
+    ['rel_time_formatted',      'Relative Time Formatted',              '',         'normal'],
+    ['rel_time',                'Relative Time',                        'ms',       'normal'],
+    ['mass',                    'Pulses',                               'amu',      'normal'],
+    ['pressure_torr',           'Pressure',                             'torr',     'normal'],
+])
