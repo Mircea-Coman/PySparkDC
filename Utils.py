@@ -38,6 +38,40 @@ def fix_parameter_list(keys, param_array):
         raise ValueError("The dimensions of the parameter array and the key array are invalid!")
         return -1
 
+
+def get_concatenation_type_columns(info_dict, type):
+    columns = []
+    for item in info_dict.items():
+        key = item[0]
+        subdict = item[1]
+        if 'concatenation_type' in subdict:
+            if subdict['concatenation_type'] == type: columns.append(key)
+        else:
+            raise ValueError('concatenation_type not find in dictionary!')
+    return columns
+
+def get_keys_info_dict(info_dict):
+    props = []
+    for item in info_dict.items():
+        key = item[0]
+        subdict = item[1]
+        props.append(key)
+    return props
+
+
+def get_from_info_dict(info_dict, property):
+    props = []
+    for item in info_dict.items():
+        key = item[0]
+        subdict = item[1]
+        if property in subdict:
+            props.append(subdict[property])
+        else:
+            raise ValueError(f'{property} not find in dictionary!')
+
+    return props
+
+
 def fix_gaps_between_files(data, key, add_nan = True):
     """
     Fixes the data for plotting. It adds n-1 data points in between data corresponding to different files. If add_nan it adds a nan, otherwise it copies the previous data.
@@ -60,7 +94,7 @@ def fix_gaps_between_files(data, key, add_nan = True):
     new_x = np.zeros([x.shape[0] + n_files - 1])
     for i in range(0, n_files):
         start = file_separators[i, 0]
-        end = file_separators[i, 1]
+        end = file_separators[i, 1]+1
         new_x[start+i:end+i] = x[start:end].flatten()
         if i != n_files - 1:
             if add_nan:

@@ -13,7 +13,7 @@ from default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_STYLE
 
 class Data:
 
-    def __init__(self, *args, structure = DEFAULT_TEMPERATURE_STRUCTURE):
+    def __init__(self, df, info_dict):
         """
         Initializer for the Data Class
         Parameters
@@ -35,20 +35,8 @@ class Data:
             The structure of the data. For each data field, the structure is the following: [column name, full label, unit, concatenation type]
             If label_dict, unit_dict, and concatenation_type_dict are present, this argument is ignored
         """
-        if len(args) == 0:
-            self.label_dict, self.unit_dict, self.concatenation_type_dict = self.__create_dictionaries__(structure)
-            self.df =  pd.DataFrame(columns = structure[:, 0])
-        elif len(args) == 1:
-            self.df = args[0]
-            self.label_dict, self.unit_dict, self.concatenation_type_dict = self.__create_dictionaries__(structure)
-        elif len(args) == 4:
-            self.df = args[0]
-            self.label_dict = args[1]
-            self.unit_dict = args[2]
-            self.concatenation_type_dict =  args[3]
-
-        else:
-            raise ValueError("Invalid number of arguments")
+        self.df = df
+        self.info_dict = info_dict
 
 
     # def __getattr__(self, key):
@@ -115,7 +103,7 @@ class Data:
             file_separators[j, 1] = end
         return file_separators
 
-    def plot(self, keys, x_key = 'timestamp', plot_datetime = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
+    def plot(self, keys, x_key = 'timestamp', datetime_plot = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
     fplot = None, ax_id = None, figsize = (13, 8), marker = None, markersize = 5, linestyle = '-', linewidth = 2, color = None, \
     labels = None, fontsize = 12, fontweight = 'normal', use_style_dict = True, style_dict = DEFAULT_STYLE, scaling_y = 1):
         """
@@ -128,7 +116,7 @@ class Data:
 
         x_key:              str, default: 'timestamp'
                             The key corresponding to the column to be plotted on the x axis.
-        plot_datetime:      boolean, default: True
+        datetime_plot:      boolean, default: True
                             Plots formatted datetimes on x axis if x_key is 'timestamp'
         date_format:        boolean, default: '%m-%d %H:%M:%S'
                             Format used to format the datetimes
@@ -151,7 +139,7 @@ class Data:
         """
         if fplot is None:
             fplot = FancyPlot(n_ax = Utils.dim(keys)[0], figsize = figsize, style_dict = DEFAULT_STYLE, fontweight = fontweight, fontsize = fontsize)
-        fplot.plot_data(self, keys,  x_key = x_key, plot_datetime = plot_datetime, date_format = date_format, timezone = timezone, \
+        fplot.plot_data(self, keys,  x_key = x_key, datetime_plot = datetime_plot, date_format = date_format, timezone = timezone, \
                 ax_id = ax_id, marker = marker, markersize = markersize, linestyle = linestyle, linewidth = linewidth, color = color, labels = labels, \
                 use_style_dict = use_style_dict, scaling_y = scaling_y)
         return fplot
@@ -203,8 +191,8 @@ class Data:
                 The label for a given key
         """
 
-        if key in self.label_dict:
-            return self.label_dict[key]
+        if key in self.info_dict:
+            return self.info_dict[key]['label']
         else:
             raise AttributeError(f"'{key}' is not a valid data field!")
 
@@ -221,14 +209,17 @@ class Data:
                 The unit for a given key
         """
 
-        if key in self.unit_dict:
-            return self.unit_dict[key]
+        if key in self.info_dict:
+            return self.info_dict[key]['unit']
         else:
             raise AttributeError(f"'{key}' is not a valid data field!")
 
+    def add_info_dict_entry(self, key, col = -1, label = '', unit = '', concatenation_type = 'normal'):
+        subdict = {'col': col, 'label': label, 'unit': unit, 'concatenation_type': concatenation_type}
+        self.info_dict[key] = subdict
 
     @staticmethod
-    def read_from_files(file_paths, header = None, delimiter = '\t', engine = 'c', skiprows = 0, structure = DEFAULT_TEMPERATURE_STRUCTURE):
+    def read_from_files(file_paths, header = None, delimiter = '\t', engine = 'c', skiprows = 0, info_dict = DEFAULT_TEMPERATURE_STRUCTURE):
         """
         Reads data from multiple files
         Parameters
@@ -250,16 +241,26 @@ class Data:
         data:   Data
                 Data object corresponding to the data read from the file_paths
         """
+        Data.__check_and_fill_info_dict__(info_dict)
         dfs = []
         n_files = len(file_paths)
         i = 0
         prev_file_end_index = 0
         for file_path in file_paths:
-            new_df = pd.read_csv(file_path, engine = engine,  index_col=False, header = header, skiprows = skiprows, delimiter = delimiter, names = structure[:, 0])
-            additive_columns = np.where(structure[:, -1] == 'additive')[0]
-            if i != 0:
-                last_values_additive_columns = dfs[i-1].iloc[-1, additive_columns]
-                new_df.iloc[:, additive_columns] += last_values_additive_columns
+            keys = np.array(Utils.get_keys_info_dict(info_dict))
+            used_cols = np.array(Utils.get_from_info_dict(info_dict, 'col'))
+
+            full_df = pd.read_csv(file_path, engine = engine, index_col=False, header = header, skiprows = skiprows, delimiter = delimiter)
+
+            mask = np.array(used_cols)<full_df.shape[1]
+            new_df = full_df.iloc[:, used_cols[mask]]
+            new_df.columns = keys[mask]
+
+            additive_columns = Utils.get_concatenation_type_columns(info_dict, 'additive')
+
+            if i != 0 and additive_columns is not []:
+                last_values_additive_columns = dfs[i-1][additive_columns].iloc[-1]
+                new_df[additive_columns] += last_values_additive_columns
             col_len = new_df.shape[1]
             new_df.insert(col_len, "file", file_path, True)
             new_df.insert(col_len+1, "file_id", i, True)
@@ -269,4 +270,19 @@ class Data:
             prev_file_end_index = prev_file_end_index + n_points
             i += 1
         df = pd.concat(dfs, axis=0, ignore_index=True)
-        return Data(df, structure = structure)
+
+        return Data(df, info_dict)
+
+    @staticmethod
+    def __check_and_fill_info_dict__(info_dict):
+        for item in info_dict.items():
+            key = item[0]
+            subdict = item[1]
+            if 'col' not in subdict:
+                raise ValueError(f"'col' not found in info_dict at key {key}")
+            if 'label' not in subdict:
+                subdict['label'] = ''
+            if 'unit' not in subdict:
+                subdict['unit'] = ''
+            if 'concatenation_type' not in subdict:
+                subdict['concatenation_type'] = 'normal'

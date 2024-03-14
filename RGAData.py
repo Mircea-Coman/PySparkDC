@@ -11,13 +11,13 @@ from default_file_structures import DEFAULT_RGA_STRUCTURE
 TORR_TO_MBAR = 1.33322368
 
 class RGAData(Data):
-    def __init__(self, *args, structure = DEFAULT_RGA_STRUCTURE):
-        super().__init__(*args, structure = structure)
+    def __init__(self, *args):
+        super().__init__(*args)
         self.calculate_derived_columns()
 
     def get_subset_amu(self, mass):
         mask = (self.df.mass == mass)
-        return RGAData(self.df[mask], self.label_dict, self.unit_dict, self.concatenation_type_dict)
+        return RGAData(self.df[mask], self.info_dict)
 
 
     def calculate_derived_columns(self):
@@ -26,24 +26,24 @@ class RGAData(Data):
             self.df.loc[:, 'pressure_mbar'] = (self.df['pressure_torr'] * TORR_TO_MBAR)
         else:
             self.df['pressure_mbar'] = (self.df['pressure_torr'] * TORR_TO_MBAR)
-            self.label_dict['pressure_mbar'] = 'Pressure'
-            self.unit_dict['pressure_mbar'] = 'mbar'
-            self.concatenation_type_dict['pressure_mbar'] = 'normal'
+            self.add_info_dict_entry('pressure_mbar', label = 'Pressure', unit = 'mbar')
 
-    def plot_masses(self, masses, key = 'pressure_mbar', x_key = 'timestamp', plot_datetime = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
-    ax_id = None, fplot = None, figsize = (13, 8), linestyle = '-', color = None, scaling_y = 1):
+    def plot_masses(self, masses, key = 'pressure_mbar', x_key = 'timestamp', datetime_plot = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
+    ax_id = None, fplot = None, figsize = (13, 8), linestyle = '-', linewidth = 2, color = None, marker = 'None', markersize = 5, scaling_x = 1, scaling_y = 1):
         n_masses = len(masses)
         if fplot is None:
             fplot = FancyPlot(figsize = figsize, n_ax = 1)
 
         for i in range(0, n_masses):
-            subset = self.get_subset_amu(masses[i])
-            subset.plot(key, x_key = 'timestamp', fplot = fplot, plot_datetime = plot_datetime, date_format = date_format, timezone = timezone, \
-            ax_id = ax_id, marker = None, linestyle = '-', color = color, labels = [[f"{masses[i]} amu"]], scaling_y = scaling_y)
+            mask = (self.df.mass == masses[i])
+            print(masses[i])
+            fplot.plot(self.df[x_key][mask],  self.df[key][mask], scaling_x = 1, scaling_y = scaling_y, date_format = date_format, timezone = timezone, datetime_plot = datetime_plot, \
+             ax_id = ax_id, color = color, marker = marker, markersize = markersize, linestyle = linestyle, linewidth = linewidth, label = f"{masses[i]} amu")
+
         return fplot
 
     @staticmethod
-    def read_from_file(filename, header = None, delimiter = ',', skiprows = 22, engine ='c', structure = DEFAULT_RGA_STRUCTURE, timezone = "Europe/Stockholm"):
+    def read_from_file(filename, header = None, delimiter = ',', skiprows = 22, engine ='c', info_dict = DEFAULT_RGA_STRUCTURE, timezone = "Europe/Stockholm"):
         tzinfo = ZoneInfo(timezone)
         file = open(filename, 'r')
         lines = file.readlines()
@@ -62,12 +62,11 @@ class RGAData(Data):
                 break
             count += 1
         file.close()
-        data = Data.read_from_files([filename], header = header, delimiter = delimiter, engine = engine, skiprows = skiprows, structure = structure)
+        data = Data.read_from_files([filename], header = header, delimiter = delimiter, engine = engine, skiprows = skiprows, info_dict = info_dict)
         data.df['timestamp'] = (data.df['rel_time'] / 1000.0 + timestamp)
-        data.label_dict['timestamp'] = 'Timestamp'
-        data.unit_dict['timestamp'] = 's'
-        data.concatenation_type_dict['timestamp'] = 'normal'
-        rga_data = RGAData(data.df, data.label_dict, data.unit_dict, data.concatenation_type_dict)
+        data.add_info_dict_entry('timestamp', label = 'Timestamp', unit = 's')
+
+        rga_data = RGAData(data.df, data.info_dict)
         return rga_data
 
 

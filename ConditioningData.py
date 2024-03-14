@@ -9,21 +9,17 @@ import numpy as np
 DEFAULT_FILENAME = 'Marx_data.txt'
 
 class ConditioningData(Data):
-    def __init__(self, *args, structure = DEFAULT_CONDITIONING_STRUCTURE, electrode_name = ''):
+    def __init__(self, *args, electrode_name = ''):
         self.electrode_name = electrode_name
-        super().__init__(*args, structure = structure)
+        super().__init__(*args)
         self.calculate_derived_columns()
 
     def calculate_derived_columns(self):
         self.df['target_field'] = (self.df['target_voltage'] / self.df['gap'])
-        self.label_dict['target_field'] = 'Target Electric Field'
-        self.unit_dict['target_field'] = 'MV/m'
-        self.concatenation_type_dict['target_field'] = 'normal'
+        self.add_info_dict_entry('target_field', label = 'Target Field', unit = 'MV/m')
 
         self.df['field'] = (self.df['output_voltage'] / self.df['gap'])
-        self.label_dict['field'] = 'Electric Field'
-        self.unit_dict['field'] = 'MV/m'
-        self.concatenation_type_dict['field'] = 'normal'
+        self.add_info_dict_entry('field', label = 'Electric Field', unit = 'MV/m')
 
     def get_run_separators(self, run_id, key = 'run_id'):
         dim = Utils.dim(run_id)
@@ -101,13 +97,13 @@ class ConditioningData(Data):
         return fplot
 
     @staticmethod
-    def read_from_files(file_paths, header = None, delimiter = '\s+', skiprows = 1, engine ='python', structure = DEFAULT_CONDITIONING_STRUCTURE, electrode_name = ''):
-        data = Data.read_from_files(file_paths, header = header, delimiter = delimiter, engine = engine, skiprows = skiprows, structure = DEFAULT_CONDITIONING_STRUCTURE)
-        cond_data = ConditioningData(data.df, data.label_dict, data.unit_dict, data.concatenation_type_dict, electrode_name = electrode_name)
+    def read_from_files(file_paths, header = None, delimiter = '\s+', skiprows = 1, engine ='python', info_dict = DEFAULT_CONDITIONING_STRUCTURE, electrode_name = ''):
+        data = Data.read_from_files(file_paths, header = header, delimiter = delimiter, engine = engine, skiprows = skiprows, info_dict = DEFAULT_CONDITIONING_STRUCTURE)
+        cond_data = ConditioningData(data.df, data.info_dict)
         return cond_data
 
     @staticmethod
-    def read_runs(data_folder, electrode, runs, header = None, delimiter = '\s+', skiprows = 1, engine ='python', structure = DEFAULT_CONDITIONING_STRUCTURE):
+    def read_runs(data_folder, electrode, runs, header = None, delimiter = '\s+', skiprows = 1, engine ='python', info_dict = DEFAULT_CONDITIONING_STRUCTURE):
         electrode_path = os.path.join(data_folder, electrode)
         files_to_read = []
         for current_run in runs:
@@ -115,7 +111,7 @@ class ConditioningData(Data):
             file_path = os.path.join(run_path, DEFAULT_FILENAME)
             files_to_read.append(file_path)
         cond_data = ConditioningData.read_from_files(files_to_read, header = header, delimiter = delimiter, skiprows = skiprows, \
-        engine = engine, structure = structure, electrode_name = electrode)
+        engine = engine, info_dict = info_dict, electrode_name = electrode)
         col_len = cond_data.df.shape[1]
 
         #make the run_id column, which shows the run number

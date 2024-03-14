@@ -157,13 +157,13 @@ class FancyPlot():
         self.color_cycle_counter += 1
         return color
 
-    def stripe_from_data(self, data, start_i, end_i, x_key = 'timestamp', ax_id = 0, color = '0.9', datetime = False, timezone = 'Europe/Stockholm'):
+    def stripe_from_data(self, data, start_i, end_i, x_key = 'timestamp', ax_id = 0, color = '0.9', datetime_plot = False, timezone = 'Europe/Stockholm'):
         start = data.df[x_key].iloc[start_i]
         end = data.df[x_key].iloc[end_i]
-        self.stripe(start, end, ax_id = ax_id, color = color, datetime = datetime, timezone = timezone)
+        self.stripe(start, end, ax_id = ax_id, color = color, datetime_plot = datetime_plot, timezone = timezone)
 
 
-    def stripe(self, start_x, end_x, ax_id = 0, color = '0.9', datetime = False, timezone = 'Europe/Stockholm'):
+    def stripe(self, start_x, end_x, ax_id = 0, color = '0.9', datetime_plot = False, timezone = 'Europe/Stockholm'):
         if datetime:
             new_start_x = mdates.epoch2num(start_x)
             new_end_x = mdates.epoch2num(end_x)
@@ -181,34 +181,36 @@ class FancyPlot():
         for i in range(new_start_x.shape[0]):
             self.axs[ax_id].axvspan(new_start_x[i], new_end_x[i], facecolor = color)
 
-    def stripe_files(self, data, x_key = 'timestamp', ax_id = 0, color = '0.9', sec_color = '1.0', datetime = False, timezone = 'Europe/Stockholm'):
+    def stripe_files(self, data, x_key = 'timestamp', ax_id = 0, color = '0.9', sec_color = '1.0', datetime_plot = False, timezone = 'Europe/Stockholm'):
         f_sep = data.file_separators
 
         for i in range(f_sep.shape[0]):
             current_color = color if i%2 else sec_color
-            self.stripe_from_data(data, f_sep[i,0], f_sep[i,1], x_key = x_key, ax_id = ax_id, color = current_color, datetime = datetime, timezone = timezone)
+            self.stripe_from_data(data, f_sep[i,0], f_sep[i,1], x_key = x_key, ax_id = ax_id, color = current_color, datetime_plot = datetime_plot, timezone = timezone)
             # self.axs[ax_id].axvspan(data.df[x_key].iloc[f_sep[i, 0]], data.df[x_key].iloc[max(0, f_sep[i, 1]-1)], facecolor = current_color)
 
-    def plot(self, x, y, ax_id = 0, marker = None, markersize = 5, linestyle = '-', linewidth = 2,\
-     color = None, label = None, scaling_x = 1, scaling_y = 1):
-        if color is None:
-            color = self.__get_next_color__()
-        self.axs[ax_id].plot(scaling_x * x,  y * scaling_y, color = color, marker = marker, markersize = markersize, \
-            linestyle = linestyle, linewidth = linewidth, label = label)
+    # def plot(self, x, y, ax_id = 0, marker = None, markersize = 5, linestyle = '-', linewidth = 2,\
+    #  color = None, label = None, scaling_x = 1, scaling_y = 1):
+    #     if color is None:
+    #         color = self.__get_next_color__()
+    #     self.axs[ax_id].plot(scaling_x * x,  y * scaling_y, color = color, marker = marker, markersize = markersize, \
+    #         linestyle = linestyle, linewidth = linewidth, label = label)
 
-    def plot_datetime(self, x, y, ax_id = 0, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', marker = None, \
+    def plot(self, x, y, ax_id = 0, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', datetime_plot = False, marker = None, \
     markersize = 5, linestyle = '-', linewidth = 2, color = None, label = None, scaling_x = 1, scaling_y = 1):
-        new_x = mdates.epoch2num(x)
+        if datetime_plot:
+            new_x = mdates.epoch2num(x)
 
-        date_formatter = DateFormatter(date_format, tz=tz.gettz(timezone))
-        self.axs[ax_id].xaxis.set_major_formatter(date_formatter)
-        plt.setp(self.axs[ax_id].xaxis.get_majorticklabels(), rotation=70)
+            date_formatter = DateFormatter(date_format, tz=tz.gettz(timezone))
+            self.axs[ax_id].xaxis.set_major_formatter(date_formatter)
+            plt.setp(self.axs[0].xaxis.get_majorticklabels(), rotation=70)
+        else:
+            new_x = scaling_x*x
+        self.axs[ax_id].plot(new_x,  y * scaling_y, color = color, marker = marker, markersize = markersize, \
+                linestyle = linestyle, linewidth = linewidth, label = label)
 
-        self.plot(new_x,  y, scaling_x = 1, scaling_y = scaling_y, ax_id = ax_id, color = color, marker = marker, markersize = markersize, \
-            linestyle = linestyle, linewidth = linewidth, label = label)
 
-
-    def plot_data(self, data, keys, x_key = 'timestamp', plot_datetime = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
+    def plot_data(self, data, keys, x_key = 'timestamp', datetime_plot = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
     ax_id = None, marker = None, markersize = 5, linestyle = '-', linewidth = 2, color = None, labels = None, scaling_x = 1, scaling_y = 1, use_style_dict = True):
         """
         Plot the data at the selected keys. The function returns the matplotlib.axes on which it was ploted
@@ -220,7 +222,7 @@ class FancyPlot():
 
         x_key:              str, default: 'timestamp'
                             The key corresponding to the column to be plotted on the x axis.
-        plot_datetime:      boolean, default: True
+        datetime_plot:      boolean, default: True
                             Plots formatted datetimes on x axis if x_key is 'timestamp'
         date_format:        boolean, default: '%m-%d %H:%M:%S'
                             Format used to format the datetimes
@@ -252,6 +254,7 @@ class FancyPlot():
             n_axes = keys_dim[0]
         else:
             raise ValueError("The keys array should be a str, list of str, or list of lists of str!")
+        keys_dim = Utils.dim(keys) #the dimensions changed, recalculate dimensions
 
         labels_dim = Utils.dim(labels)
         if len(labels_dim) == 0:
@@ -261,10 +264,9 @@ class FancyPlot():
         elif len(labels_dim) > 2:
             raise ValueError("The labels array should be a str, list of str, or list of lists of str!")
 
-
         ax_id_dim = Utils.dim(ax_id)
         if len(ax_id_dim) == 0:
-            if ax_id is not None:     ax_id = [ax_id]*keys_dim[0]
+            if ax_id is not None:   ax_id = [ax_id]*keys_dim[0]
         elif len(ax_id_dim) == 1:
             ax_id = ax_id
         else:
@@ -282,7 +284,7 @@ class FancyPlot():
         # fix gaps between data corresponding to different files. A NaN value is added at the end of the data corresponding to each file.
             # Otherwise, in the plot, a line will brige the gap between the data corresponding to different neighbouring files
         x_data = Utils.fix_gaps_between_files(data, x_key)
-        if plot_datetime and x_key == 'timestamp':
+        if datetime_plot and x_key == 'timestamp':
             date_formatter = DateFormatter(date_format, tz=tz.gettz(timezone))
             # plt.subplots_adjust(hspace=0, bottom=0.2)
             new_x = mdates.epoch2num(x_data)
@@ -297,20 +299,20 @@ class FancyPlot():
                 current_ax = self.axs[ax_id[i]]
                 current_ax_id = ax_id[i]
 
-            if plot_datetime and x_key == 'timestamp':
+            if datetime_plot and x_key == 'timestamp':
                 current_ax.xaxis.set_major_formatter(date_formatter)
-                plt.setp(current_ax.xaxis.get_majorticklabels(), rotation=70)
+                plt.setp(self.axs[0].xaxis.get_majorticklabels(), rotation=70)
 
             for j in range(0, len(keys[i])):
                 current_color, current_linestyle, current_linewidth, current_marker, current_markersize = \
                     self.__get_style__(keys[i][j], color[i][j], linestyle[i][j], linewidth[i][j], marker[i][j], markersize[i][j], use_style_dict = use_style_dict)
                 if labels is None:
-                    label = data.label_dict[keys[i][j]]
+                    label = data.info_dict[keys[i][j]]['label']
                 else:
                     label = labels[i][j]
                 y_data = Utils.fix_gaps_between_files(data, keys[i][j], add_nan = True)
                 self.plot(new_x,  y_data, ax_id = current_ax_id, scaling_x = scaling_x, scaling_y = scaling_y, color = current_color, marker = current_marker, \
-                    markersize = current_markersize, linestyle = current_linestyle, linewidth = current_linewidth, label = label)
+                    markersize = current_markersize, linestyle = current_linestyle, linewidth = current_linewidth, label = label, datetime_plot = False)
 
     def __get_style__(self, key, color, linestyle, linewidth, marker, markersize, use_style_dict = True):
         if use_style_dict and self.style_dict is not None:
