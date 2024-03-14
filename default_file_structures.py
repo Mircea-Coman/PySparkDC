@@ -2,25 +2,35 @@ import numpy as np
 
 LABVIEW_TIMESTAMP_OFFSET = 2082844800
 
-DEFAULT_TEMPERATURE_STYLES = {
-    'temp_A':       ['crimson',                      'solid'],
-    'temp_B':       ['xkcd:pumpkin',                 'solid'],
-    'temp_C':       ['xkcd:ultramarine',             'solid'],
-    'temp_D':       ['xkcd:purply',                  'solid'],
-    'temp_E':       ['xkcd:turquoise blue',          'solid'],
-    'temp_F':       ['black',                        'solid'],
+DEFAULT_STYLE = {
+#   Temperature
+    'temp_A':       {'color': 'crimson',          'linestyle': 'solid'},
+    'temp_B':       {'color': 'xkcd:pumpkin',     'linestyle': 'solid'},
+    'temp_C':       {'color': 'xkcd:ultramarine', 'linestyle': 'solid'},
+    'temp_D':       {'color': 'xkcd:purply',      'linestyle': 'solid'},
+    'temp_E':       {'color': 'xkcd:turquoise',   'linestyle': 'solid'},
+    'temp_F':       {'color': 'black',            'linestyle': 'solid'},
 
-    'vacuum_1':     ['xkcd:light olive green',      'solid'],
-    'vacuum_2':     ['xkcd:dull yellow',            'solid'],
+    'vacuum_1':     {'color': 'xkcd:light olive green',    'linestyle': 'solid'},
+    'vacuum_2':     {'color': 'xkcd:dull yellow',          'linestyle': 'solid'},
 
-    'capacitance':  ['black',                       'dotted'],
+    'capacitance':  {'color': 'black',                     'linestyle': 'solid'},
 
-    'heater_1':       ['gray',                        'solid'],
+    'heater_1':     {'color': 'gray',                     'linestyle': 'solid'},
 
-    'setpoint':     ['xkcd:ultramarine',            'dotted'],
+    'setpoint':     {'color': 'xkcd:ultramarine',          'linestyle': 'solid'},
 
+#   Conditioning
+    'field':            {'color': 'xkcd:cobalt blue',   'linestyle': 'None', 'marker': 'o'},
+    'target_field':     {'color': 'xkcd:cobalt blue',   'linestyle': 'None', 'marker': 'o'},
+    'output_voltage':   {'color': 'xkcd:cobalt blue',   'linestyle': 'None', 'marker': 'o'},
+    'target_voltage':   {'color': 'xkcd:cobalt blue',   'linestyle': 'None', 'marker': 'o'},
 
+    'BDs':              {'color': 'xkcd:vermillion',   'linestyle': 'None', 'marker': 'o'},
+
+    'BDR':              {'color': 'xkcd:true green',   'linestyle': '-s', 'marker': 'o'},
 }
+
 
 DEFAULT_TEMPERATURE_STRUCTURE = np.array([
     ['temp_A',              'Temperature CH A',                     'K',        'normal'],
@@ -31,21 +41,21 @@ DEFAULT_TEMPERATURE_STRUCTURE = np.array([
     ['temp_F',              'Temperature CH F',                     'K',        'normal'],
     ['warning_state',       'Warning State',                        '',         'normal'],
     ['alarm_state',         'Alarm State',                          '',     '   normal'],
-    ['water_in_temp',       'Water In Temp',                        '°C?',      'normal'],
-    ['water_out_temp',      'Water Out Temp',                       '°C?',      'normal'],
-    ['oil_temp',            'Oil Temperature' ,                     '°C?',      'normal'],
+    ['water_in_temp',       'Water In Temp',                        '°C',      'normal'],
+    ['water_out_temp',      'Water Out Temp',                       '°C',      'normal'],
+    ['oil_temp',            'Oil Temperature' ,                     '°C',      'normal'],
     ['helium_temp',         'Helium Temperature',                   'K',        'normal'],
-    ['low_pressure',        'Low Pressure',                         'bar?',     'normal'],
-    ['low_pressure_avg',    'Low Pressure Average',                 'bar?',     'normal'],
-    ['high_pressure',       'High Pressure',                        'bar?',     'normal'],
-    ['high_pressure_avg',   'High Pressure Average',                'bar?',     'normal'],
-    ['delta_pressure_avg',  'Delta Pressure Average',               'bar?',     'normal'],
+    ['low_pressure',        'Low Pressure',                         'bar',     'normal'],
+    ['low_pressure_avg',    'Low Pressure Average',                 'bar',     'normal'],
+    ['high_pressure',       'High Pressure',                        'bar',     'normal'],
+    ['high_pressure_avg',   'High Pressure Average',                'bar',     'normal'],
+    ['delta_pressure_avg',  'Delta Pressure Average',               'bar',     'normal'],
     ['motor_current',       'Motor Current',                        'A',        'normal'],
-    ['time_of_operation',   'Time of Operation',                    's?',       'normal'],
+    ['time_of_operation',   'Time of Operation',                    's',       'normal'],
     ['heater_1',            'Heater 1',                             '%',        'normal'],
     ['heater_2',            'Heater 2',                             '%',        'normal'],
     ['timestamp',           'Timestamp',                            's',        'normal'],
-    ['capacitance',         'Capacitance',                          'F?',       'normal'],
+    ['capacitance',         'Capacitance',                          'F',       'normal'],
     ['vacuum_1',            'Vacuum 1',                             'mbar',     'normal'],
     ['vacuum_2',            'Vacuum 2',                             'mbar',     'normal'],
     ['resistivity_A',       'Resistivity A',                        'Ohm',      'normal'],

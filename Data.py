@@ -2,14 +2,14 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from matplotlib.dates import DateFormatter
-import matplotlib.dates as mdates
 from dateutil import tz
 from zoneinfo import ZoneInfo
 import time
 import datetime
 
-from default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_TEMPERATURE_STYLES, LABVIEW_TIMESTAMP_OFFSET
+import Utils
+from FancyPlot import FancyPlot
+from default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_STYLE
 
 class Data:
 
@@ -112,11 +112,12 @@ class Data:
             # if end < start: # check if there is somehow no columns comming from the file
             #     end = start
             file_separators[j, 0] = start
-            file_separators[j, 1] = end + 1 #add one to be able to select data like df[start:end]
+            file_separators[j, 1] = end
         return file_separators
 
-    def plot(self, key, x_key = 'timestamp', plot_datetime = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
-    ax = None, marker = None, linestyle = '-', color = 'k', label = None, scaling_factor_y = 1):
+    def plot(self, keys, x_key = 'timestamp', plot_datetime = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
+    fplot = None, ax_id = None, figsize = (13, 8), marker = None, markersize = 5, linestyle = '-', linewidth = 2, color = None, \
+    labels = None, fontsize = 12, fontweight = 'normal', use_style_dict = True, style_dict = DEFAULT_STYLE, scaling_y = 1):
         """
         Plot the data at the selected key. The function returns the matplotlib.axes on which it was ploted
 
@@ -148,56 +149,14 @@ class Data:
         ax: matplotlib.axes
             The matplotlib axes on which the data was plotted
         """
-        if ax is None:
-            fig, ax = plt.subplots(figsize = (13, 8)) # make the plot if no axes
+        if fplot is None:
+            fplot = FancyPlot(n_ax = Utils.dim(keys)[0], figsize = figsize, style_dict = DEFAULT_STYLE, fontweight = fontweight, fontsize = fontsize)
+        fplot.plot_data(self, keys,  x_key = x_key, plot_datetime = plot_datetime, date_format = date_format, timezone = timezone, \
+                ax_id = ax_id, marker = marker, markersize = markersize, linestyle = linestyle, linewidth = linewidth, color = color, labels = labels, \
+                use_style_dict = use_style_dict, scaling_y = scaling_y)
+        return fplot
 
-        # fix gaps between data corresponding to different files. A NaN value is added at the end of the data corresponding to each file.
-            # Otherwise, in the plot, a line will brige the gap between the data corresponding to different neighbouring files
-        x_data = self.__fix_gaps_between_files__(x_key)
-        y_data = self.__fix_gaps_between_files__(key, add_nan = True)
 
-        if plot_datetime and x_key == 'timestamp':
-            date_formatter = DateFormatter(date_format, tz=tz.gettz(timezone))
-            ax.xaxis.set_major_formatter(date_formatter)
-            plt.subplots_adjust(hspace=0, bottom=0.2)
-            plt.setp(ax.xaxis.get_majorticklabels(), rotation=70 )
-
-            new_x = mdates.epoch2num(x_data)
-            ax.plot_date(new_x,  y_data * scaling_factor_y, fmt = color, marker = marker, linestyle = linestyle, label = label)
-        else:
-            ax.plot(x_data,  y_data * scaling_factor_y, color = color, marker = marker, linestyle = linestyle, label = label)
-        return ax
-
-    def __fix_gaps_between_files__(self, key, add_nan = True):
-        """
-        Fixes the data for plotting. It adds n-1 data points in between data corresponding to different files. If add_nan it adds a nan, otherwise it copies the previous data.
-
-        Parameters
-        ----------
-        key:                str
-                            The key corresponding to the column to be plotted on the y axis
-
-        add_nan:            bool, default: True
-                            If True, add a NaN value at the end of the data corresponding to each file. Otherwise, copy the previous value
-        Returns
-        -------
-        new_x:              numpy.ndarray
-                            The fixed array
-        """
-        file_separators = self.file_separators
-        n_files = file_separators.shape[0]
-        x = self.df[key].to_numpy()
-        new_x = np.zeros([x.shape[0] + n_files - 1])
-        for i in range(0, n_files):
-            start = file_separators[i, 0]
-            end = file_separators[i, 1]
-            new_x[start+i:end+i] = x[start:end].flatten()
-            if i != n_files - 1:
-                if add_nan:
-                    new_x[end+i] = np.NAN
-                else:
-                    new_x[end+i] = x[end-1]
-        return new_x
 
 
     def remove_data_timestamp_range(self, timestamp_limits):

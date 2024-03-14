@@ -30,19 +30,17 @@ class RGAData(Data):
             self.unit_dict['pressure_mbar'] = 'mbar'
             self.concatenation_type_dict['pressure_mbar'] = 'normal'
 
-    def plot_masses(self, masses, x_key = 'timestamp', plot_datetime = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
-    ax = None, figsize = (13, 8), linestyle = '-', color_cycle = 'default', scaling_factor_y = 1):
+    def plot_masses(self, masses, key = 'pressure_mbar', x_key = 'timestamp', plot_datetime = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
+    ax_id = None, fplot = None, figsize = (13, 8), linestyle = '-', color = None, scaling_y = 1):
         n_masses = len(masses)
-        if ax is None:
-            fig, ax = plt.subplots(figsize=figsize)
-        if color_cycle == 'default':
-            color_cycle = plt.rcParams['axes.prop_cycle'].by_key()['color']
+        if fplot is None:
+            fplot = FancyPlot(figsize = figsize, n_ax = 1)
+
         for i in range(0, n_masses):
-            color = color_cycle[i%len(color_cycle)]
             subset = self.get_subset_amu(masses[i])
-            subset.plot('pressure_mbar', x_key = 'timestamp', plot_datetime = plot_datetime, date_format = date_format, timezone = timezone, \
-            ax = ax, marker = None, linestyle = '-', color = color, label = f"{masses[i]} amu", scaling_factor_y = scaling_factor_y)
-        return ax
+            subset.plot(key, x_key = 'timestamp', fplot = fplot, plot_datetime = plot_datetime, date_format = date_format, timezone = timezone, \
+            ax_id = ax_id, marker = None, linestyle = '-', color = color, labels = [[f"{masses[i]} amu"]], scaling_y = scaling_y)
+        return fplot
 
     @staticmethod
     def read_from_file(filename, header = None, delimiter = ',', skiprows = 22, engine ='c', structure = DEFAULT_RGA_STRUCTURE, timezone = "Europe/Stockholm"):

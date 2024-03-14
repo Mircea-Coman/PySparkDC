@@ -8,45 +8,12 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.dates import DateFormatter
 
-from default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_TEMPERATURE_STYLES, LABVIEW_TIMESTAMP_OFFSET
+from default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
 from Data import Data
 
 class StatusData(Data):
     def __init__(self, *args, structure = DEFAULT_TEMPERATURE_STRUCTURE):
         super().__init__(*args, structure = structure)
-
-    def plot_status(self, keys, x_key = 'timestamp', plot_datetime = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
-    ax = None, figsize = (13, 8), style_dict = DEFAULT_TEMPERATURE_STYLES):
-        file_separators = self.file_separators
-        n_files = file_separators.shape[0]
-        n_keys = len(keys)
-
-        #get colors
-        color_cycle = plt.rcParams['axes.prop_cycle'].by_key()['color']
-        colors = []
-        linestyles = []
-        k = 0
-        for i in range(0, n_keys):
-            if keys[i] in style_dict: # if the style of the key is specified in style_dict
-                colors.append(style_dict[keys[i]][0])
-                linestyles.append(style_dict[keys[i]][1])
-            else: # otherwise, use the next color from the color cycle
-                colors.append(color_cycle[k%len(color_cycle)])
-                linestyles.append('dashed')
-                k += 1
-        x_data = self.__fix_gaps_between_files__(x_key)
-
-        #make the plot
-        if ax is None:
-            fig, ax = plt.subplots(figsize = (13, 8))
-
-        for i in range(0, n_keys):
-            self.plot(keys[i], x_key = x_key, plot_datetime = plot_datetime, date_format = date_format, timezone = timezone, ax = ax, \
-            color = colors[i], linestyle = linestyles[i], label = self.label_dict[keys[i]] )
-
-        ax.legend()
-
-        return ax
 
 
     @staticmethod
