@@ -27,7 +27,7 @@ plt.show()
 
 
 
-![png](example_figures/output_3_0.png)
+![png](/example_figures/output_3_0.png)
 
 
 
@@ -42,7 +42,7 @@ plt.show()
 
 
 
-![png](example_figures/output_5_0.png)
+![png](/example_figures/output_5_0.png)
 
 
 
@@ -72,7 +72,7 @@ plt.show()
 
 
 
-![png](example_figures/output_9_0.png)
+![png](/example_figures/output_9_0.png)
 
 
 
@@ -88,7 +88,7 @@ plt.show()
 
 
 
-![png](example_figures/output_11_0.png)
+![png](/example_figures/output_11_0.png)
 
 
 
@@ -125,7 +125,7 @@ fplot.set_ylabels(r'Partial Pressure [$10^{-9} mbar$]', 'Temperature [K]')
 
 
 
-![png](example_figures/output_15_0.png)
+![png](/example_figures/output_15_0.png)
 
 
 
@@ -157,7 +157,7 @@ fplot.fig
 
 
 
-![png](example_figures/output_17_0.png)
+![png](/example_figures/output_17_0.png)
 
 
 
@@ -180,7 +180,7 @@ plt.show()
 
 
 
-![png](example_figures/output_19_0.png)
+![png](/example_figures/output_19_0.png)
 
 
 
@@ -196,4 +196,4 @@ plt.show()
 
 
 
-![png](example_figures/output_21_0.png)
+![png](/example_figures/output_21_0.png)
