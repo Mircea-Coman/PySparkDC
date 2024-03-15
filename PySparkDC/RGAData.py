@@ -3,11 +3,11 @@ import numpy as np
 import time
 import datetime
 from zoneinfo import ZoneInfo
-
 import matplotlib.pyplot as plt
-from Data import Data
-from default_file_structures import DEFAULT_RGA_STRUCTURE
-import Utils
+
+from . import Data
+from .default_file_structures import DEFAULT_RGA_STRUCTURE
+from . import Utils
 
 TORR_TO_MBAR = 1.33322368
 

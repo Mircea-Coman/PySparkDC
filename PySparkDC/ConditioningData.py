@@ -1,10 +1,12 @@
-from Data import Data
-from default_file_structures import DEFAULT_CONDITIONING_STRUCTURE, DEFAULT_STYLE, LABVIEW_TIMESTAMP_OFFSET
 import os
 import glob
 import pandas as pd
-import Utils
 import numpy as np
+
+from . import Data
+from .default_file_structures import DEFAULT_CONDITIONING_STRUCTURE, DEFAULT_STYLE, LABVIEW_TIMESTAMP_OFFSET
+from . import Utils
+
 
 DEFAULT_FILENAME = 'Marx_data.txt' # the filename containing the data from the Marx generator
 

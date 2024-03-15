@@ -1,15 +1,15 @@
 import numpy as np
-from Data import Data
-from StatusData import StatusData
-from ConditioningData import ConditioningData
-from RGAData import RGAData
-from FancyPlot import FancyPlot
-from FieldEmissionData import FieldEmissionData
 
-from default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_CONDITIONING_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
+from PySparkDC import Data
+from PySparkDC import StatusData
+from PySparkDC import ConditioningData
+from PySparkDC import RGAData
+from PySparkDC import FancyPlot
+from PySparkDC import FieldEmissionData
+from PySparkDC import Utils
+from PySparkDC.default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_CONDITIONING_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
 
 import matplotlib.pyplot as plt
-import Utils
 
 
 
@@ -45,21 +45,21 @@ fplot.legend(loc='upper center')
 fplot.set_zorder([2, 1, 0])
 plt.show()
 
-# FE_data_1 = FieldEmissionData.read_from_files(file_FE_1, current_limiting_resistor = 100E3, gap = 66,  skiprows = 6)
-# FE_data_2 = FieldEmissionData.read_from_files(file_FE_2, current_limiting_resistor = 100E3, gap = 66, skiprows = 6)
-#
-# ivplot = FE_data_1.plot_IV(x_key = 'true_field', FN_plot = True, marker = '.', label = 'Before Heating')
-# FE_data_2.plot_IV(x_key = 'true_field', FN_plot = True, fplot = ivplot, marker = '.', label = 'After Heating')
-# plt.legend()
-# plt.show()
+FE_data_1 = FieldEmissionData.read_from_files(file_FE_1, current_limiting_resistor = 100E3, gap = 66,  skiprows = 6)
+FE_data_2 = FieldEmissionData.read_from_files(file_FE_2, current_limiting_resistor = 100E3, gap = 66, skiprows = 6)
+
+ivplot = FE_data_1.plot_IV(x_key = 'true_field', FN_plot = True, marker = '.', label = 'Before Heating')
+FE_data_2.plot_IV(x_key = 'true_field', FN_plot = True, fplot = ivplot, marker = '.', label = 'After Heating')
+plt.legend()
+plt.show()
 
 
-# folder = '/media/mircea/AAAAAAAAAAA/conditioning data/'
-# electrode  = '066_RFQ_Nb_rm1'
-# runs = np.arange(1, 11)
-# cond_data = ConditioningData.read_runs(folder, electrode, runs)
-# cplot = cond_data.plot_standard(color_runs = [{'color': (1, 0, 0, 0.2), 'run': [1,3]}, {'color': (0, 1, 0, 0.2), 'run': 2}], stripe=True)
-# plt.show()
+folder = '/media/mircea/AAAAAAAAAAA/conditioning data/'
+electrode  = '066_RFQ_Nb_rm1'
+runs = np.arange(1, 11)
+cond_data = ConditioningData.read_runs(folder, electrode, runs)
+cplot = cond_data.plot_standard(color_runs = [{'color': (1, 0, 0, 0.2), 'run': [1,3]}, {'color': (0, 1, 0, 0.2), 'run': 2}], stripe=True)
+plt.show()
 
 # fplot = cond_data.plot([['target_field'], ['BDs'], ['BDR']], x_key = 'all_pulses', figsize = (20, 10))
 # fplot.set_ylabels('Electic Field [MV/m]', 'BD #', 'BDR')

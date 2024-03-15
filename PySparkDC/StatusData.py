@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.dates import DateFormatter
 
-from default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
-from Data import Data
+from .default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
+from . import Data
 
 class StatusData(Data):
     def __init__(self, *args):

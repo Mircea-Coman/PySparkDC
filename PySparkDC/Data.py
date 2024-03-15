@@ -7,9 +7,9 @@ from zoneinfo import ZoneInfo
 import time
 import datetime
 
-import Utils
-from FancyPlot import FancyPlot
-from default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_STYLE
+from . import Utils
+from . import FancyPlot
+from .default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_STYLE
 
 class Data:
 

@@ -7,8 +7,8 @@ from matplotlib.dates import DateFormatter
 from dateutil import tz
 from zoneinfo import ZoneInfo
 
-import Utils
-from default_file_structures import DEFAULT_STYLE
+from .default_file_structures import DEFAULT_STYLE
+from . import Utils
 
 class FancyPlot():
     """

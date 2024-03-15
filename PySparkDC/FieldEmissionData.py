@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
 
-from default_file_structures import DEFAULT_FE_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
-from Data import Data
-from FancyPlot import FancyPlot
+from .default_file_structures import DEFAULT_FE_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
+from . import Data
+from . import FancyPlot
 
 class FieldEmissionData(Data):
     def __init__(self, *args, gap = 60, current_limiting_resistor = 0):
