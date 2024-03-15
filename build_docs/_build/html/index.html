@@ -1,0 +1,1693 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Welcome to PySparkDC’s documentation! &#8212; PySparkDC  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="welcome-to-pysparkdc-s-documentation">
+<h1>Welcome to PySparkDC’s documentation!<a class="headerlink" href="#welcome-to-pysparkdc-s-documentation" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-SparkDC.FancyPlot"></span><dl class="py class">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SparkDC.FancyPlot.</span></span><span class="sig-name descname"><span class="pre">FancyPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(13,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontweight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A very fancy plotting tool used for making multiple axes plots</p>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.add_axis" title="SparkDC.FancyPlot.FancyPlot.add_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_axis</span></code></a>([location, offset])</p></td>
+<td><p>Add a new vertical axis to the plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.legend" title="SparkDC.FancyPlot.FancyPlot.legend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend</span></code></a>([ax_id, loc])</p></td>
+<td><p>Make the legend for the plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.plot" title="SparkDC.FancyPlot.FancyPlot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(x, y[, ax_id, date_format, timezone, ...])</p></td>
+<td><p>Plots the specified x and y data on the FancyPlot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.plot_data" title="SparkDC.FancyPlot.FancyPlot.plot_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_data</span></code></a>(data, keys[, x_key, ...])</p></td>
+<td><p>Plots the selected columns from the pandas dataframe of the Data obejct</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.send_ax_to_front" title="SparkDC.FancyPlot.FancyPlot.send_ax_to_front"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_ax_to_front</span></code></a>(ax_id)</p></td>
+<td><p>Set the specified matplotlib axes to the top of the other axes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_ax_zorder" title="SparkDC.FancyPlot.FancyPlot.set_ax_zorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ax_zorder</span></code></a>(ax_id, zorder)</p></td>
+<td><p>Sets the zorder for a specified matplotlib axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_axis_xlabel" title="SparkDC.FancyPlot.FancyPlot.set_axis_xlabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_axis_xlabel</span></code></a>(ax_id, xlabel)</p></td>
+<td><p>Set the x label for the specified matplotlib axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_axis_xlim" title="SparkDC.FancyPlot.FancyPlot.set_axis_xlim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_axis_xlim</span></code></a>(ax_id, lim)</p></td>
+<td><p>Set the limits for the x axis for the specified matplotlib axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_axis_ylabel" title="SparkDC.FancyPlot.FancyPlot.set_axis_ylabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_axis_ylabel</span></code></a>(ax_id, ylabel)</p></td>
+<td><p>Set the y label for the specified matplotlib axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_axis_ylim" title="SparkDC.FancyPlot.FancyPlot.set_axis_ylim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_axis_ylim</span></code></a>(ax_id, lim)</p></td>
+<td><p>Set the limits for the y axis for the specified matplotlib axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_axis_yscale" title="SparkDC.FancyPlot.FancyPlot.set_axis_yscale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_axis_yscale</span></code></a>(ax_id, scale)</p></td>
+<td><p>Set the scale type for the y scale for a specified matplotlib axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_fontsize" title="SparkDC.FancyPlot.FancyPlot.set_fontsize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fontsize</span></code></a>(fontsize)</p></td>
+<td><p>Set the fontsize</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_patches_invisible" title="SparkDC.FancyPlot.FancyPlot.set_patches_invisible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_patches_invisible</span></code></a>()</p></td>
+<td><p>Makes all matplotlib.patches invisible.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_spine_color" title="SparkDC.FancyPlot.FancyPlot.set_spine_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_spine_color</span></code></a>(ax_id, color)</p></td>
+<td><p>Sets the color of the spine for a specified matplotlib axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_spine_spacing" title="SparkDC.FancyPlot.FancyPlot.set_spine_spacing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_spine_spacing</span></code></a>(offset)</p></td>
+<td><p>Set the spacing between successive y axes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_xlabel" title="SparkDC.FancyPlot.FancyPlot.set_xlabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_xlabel</span></code></a>(xlabel)</p></td>
+<td><p>Set the x label for all axes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_xlim" title="SparkDC.FancyPlot.FancyPlot.set_xlim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_xlim</span></code></a>(lim)</p></td>
+<td><p>Set the same xlim for all matplotlib axes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_xlim_from_data" title="SparkDC.FancyPlot.FancyPlot.set_xlim_from_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_xlim_from_data</span></code></a>(data, x_key)</p></td>
+<td><p>Set the same xlim for all matplotlib axes from a data object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_ylabels" title="SparkDC.FancyPlot.FancyPlot.set_ylabels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ylabels</span></code></a>(*ylabels)</p></td>
+<td><p>Set the y labels for all axes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.set_zorder" title="SparkDC.FancyPlot.FancyPlot.set_zorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_zorder</span></code></a>(order)</p></td>
+<td><p>Sets the zorder for all axes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.stripe" title="SparkDC.FancyPlot.FancyPlot.stripe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stripe</span></code></a>(start_x, end_x[, ax_id, color, ...])</p></td>
+<td><p>Adds an axvspan between start and end</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.stripe_files" title="SparkDC.FancyPlot.FancyPlot.stripe_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stripe_files</span></code></a>(data[, x_key, ax_id, color, ...])</p></td>
+<td><p>Makes axvspans that separate data from different files</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FancyPlot.FancyPlot.stripe_from_data" title="SparkDC.FancyPlot.FancyPlot.stripe_from_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stripe_from_data</span></code></a>(data, start_i, end_i[, ...])</p></td>
+<td><p>Adds an axvspan between data.df[x_key].iloc[start_i] and data.df[x_key].iloc[end_i]</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.add_axis">
+<span class="sig-name descname"><span class="pre">add_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'right'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.add_axis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new vertical axis to the plot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>location:   [‘left’|’right’], default:’right’</strong></dt><dd><p>The location of the new axis</p>
+</dd>
+<dt><strong>offset:     float, default: 0.1</strong></dt><dd><p>The ofset of all axes, relative to the spine of the previous axis.
+Warning: All axes will be moved, such that the offset is constant for all axes</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.legend">
+<span class="sig-name descname"><span class="pre">legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'best'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.legend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the legend for the plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int, default: -1 (last axos)</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which on which the legend will be drawn</p>
+</dd>
+<dt><strong>loc:        str or pair of floats, default: rcParams[“legend.loc”] (default: ‘best’)</strong></dt><dd><p>The location of the legend.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timezone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Europe/Stockholm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markersize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'solid'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the specified x and y data on the FancyPlot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x:              np.ndarray or pandas.Series</strong></dt><dd><p>The x data</p>
+</dd>
+<dt><strong>y:              np.ndarray or pandas.Series</strong></dt><dd><p>The y data</p>
+</dd>
+<dt><strong>ax_id:          int, default = 0</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the data will be plotted</p>
+</dd>
+<dt><strong>date_format:    str, default = ‘%m-%d %H:%M:%S’</strong></dt><dd><p>The format of the data used if datetime_plot is enabled</p>
+</dd>
+<dt><strong>timezone:       str, default = ‘Europe/Stockholm’</strong></dt><dd><p>The timezone used if if datetime_plot is enabled</p>
+</dd>
+<dt><strong>datetime_plot:  bool, default: True</strong></dt><dd><p>Specified whether the x axis is formated as datetime. If the x data are already mdates, this should be set to False</p>
+</dd>
+<dt><strong>marker:         matplotlib marker, default: None</strong></dt><dd></dd>
+<dt><strong>markersize:     int, default: 5</strong></dt><dd></dd>
+<dt><strong>linestyle:      matplotlib linestyle, default: ‘solid’</strong></dt><dd></dd>
+<dt><strong>linewidth:      int, default: 2</strong></dt><dd></dd>
+<dt><strong>color:          matplotlib color, default: None (a color is selected from the color cycle)</strong></dt><dd></dd>
+<dt><strong>label:          str, default: None</strong></dt><dd><p>The label of the Line2D plot</p>
+</dd>
+<dt><strong>scaling_x:      double</strong></dt><dd><p>The x data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+<dt><strong>scaling_y:      double</strong></dt><dd><p>The y data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.plot_data">
+<span class="sig-name descname"><span class="pre">plot_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'timestamp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timezone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Europe/Stockholm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markersize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_style_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.plot_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the selected columns from the pandas dataframe of the Data obejct</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data:               Data</strong></dt><dd><p>Data object from which data can be extracted</p>
+</dd>
+<dt><strong>key:                str, list of str or list of list of str</strong></dt><dd><p>The keys corresponding to the columns to be plotted on the y axis.
+If str: The data corresponding to the key will be plotted on an axis, corresponding to ax_id
+If list of str: The data corresponding to all keys will be plotted on a single axis, corresponding to ax_id
+if list of list of str: The data corresponding to the keys from each sublist will be plotted on different axes, corresponding to ax_id</p>
+</dd>
+<dt><strong>x_key:              str, default: ‘timestamp’</strong></dt><dd><p>The key corresponding to the column to be plotted on the x axis.</p>
+</dd>
+<dt><strong>ax_id:              int or list of int, default = None</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the data will be plotted. If None, the axis used will be 0, 1, 2, 3…</p>
+</dd>
+<dt><strong>date_format:        str, default = ‘%m-%d %H:%M:%S’</strong></dt><dd><p>The format of the data used if datetime_plot is enabled</p>
+</dd>
+<dt><strong>timezone:           str, default = ‘Europe/Stockholm’</strong></dt><dd><p>The timezone used if if datetime_plot is enabled</p>
+</dd>
+<dt><strong>datetime_plot:      bool, default: True</strong></dt><dd><p>Specified whether the x axis is formated as datetime. If the x data are already mdates, this should be set to False</p>
+</dd>
+<dt><strong>marker:             matplotlib marker, default: None</strong></dt><dd></dd>
+<dt><strong>markersize:         int, default: 5</strong></dt><dd></dd>
+<dt><strong>linestyle:          matplotlib linestyle, default: ‘solid’</strong></dt><dd></dd>
+<dt><strong>linewidth:          int, default: 2</strong></dt><dd></dd>
+<dt><strong>color:              matplotlib color, default: None (a color is selected from the color cycle)</strong></dt><dd></dd>
+<dt><strong>labels:             str or list of str, default: None</strong></dt><dd><p>The labels of the Line2D plot. If None, get the labels from the info_dict of the Data object</p>
+</dd>
+<dt><strong>scaling_x:          double</strong></dt><dd><p>The x data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+<dt><strong>scaling_y:          double</strong></dt><dd><p>The y data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+<dt><strong>use_style_dict:     bool,   default: True</strong></dt><dd><p>If true, the proprieties of the plot will be derived from the provided style_dict</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.send_ax_to_front">
+<span class="sig-name descname"><span class="pre">send_ax_to_front</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.send_ax_to_front" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the specified matplotlib axes to the top of the other axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis which will be set on top</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_ax_zorder">
+<span class="sig-name descname"><span class="pre">set_ax_zorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zorder</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_ax_zorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the zorder for a specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the zorder will be changed</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_axis_xlabel">
+<span class="sig-name descname"><span class="pre">set_axis_xlabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_axis_xlabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the x label for the specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the xlabel will be changed</p>
+</dd>
+<dt><strong>xlabel:     str</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_axis_xlim">
+<span class="sig-name descname"><span class="pre">set_axis_xlim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_axis_xlim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the limits for the x axis for the specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the xlim will be set</p>
+</dd>
+<dt><strong>lim:        [float, float]</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_axis_ylabel">
+<span class="sig-name descname"><span class="pre">set_axis_ylabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_axis_ylabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the y label for the specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the ylabel will be changed</p>
+</dd>
+<dt><strong>ylabel:     str</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_axis_ylim">
+<span class="sig-name descname"><span class="pre">set_axis_ylim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_axis_ylim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the limits for the y axis for the specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the ylim will be set</p>
+</dd>
+<dt><strong>lim:        [float, float]</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_axis_yscale">
+<span class="sig-name descname"><span class="pre">set_axis_yscale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_axis_yscale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the scale type for the y scale for a specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the yscale will be set</p>
+</dd>
+<dt><strong>scale:      {“linear”, “log”, “symlog”, “logit”, …}</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_fontsize">
+<span class="sig-name descname"><span class="pre">set_fontsize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fontsize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_fontsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the fontsize</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fontsize:   int</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_patches_invisible">
+<span class="sig-name descname"><span class="pre">set_patches_invisible</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_patches_invisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes all matplotlib.patches invisible. Useful when changing the order of the axes. It is called automatically when set_zorder() is called</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_spine_color">
+<span class="sig-name descname"><span class="pre">set_spine_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_spine_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the color of the spine for a specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the color will be changed</p>
+</dd>
+<dt><strong>color:      any matplotlib color</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_spine_spacing">
+<span class="sig-name descname"><span class="pre">set_spine_spacing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_spine_spacing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spacing between successive y axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>offset:     float</strong></dt><dd><p>The spacing of all axes, relative to the spine of the previous axis.
+Warning: All axes will be moved, such that the offset is constant for all axes</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_xlabel">
+<span class="sig-name descname"><span class="pre">set_xlabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xlabel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_xlabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the x label for all axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>xlabel:   str</strong></dt><dd><p>All axes will have the same xlabel</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_xlim">
+<span class="sig-name descname"><span class="pre">set_xlim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_xlim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the same xlim for all matplotlib axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>lim:        [float, float]</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_xlim_from_data">
+<span class="sig-name descname"><span class="pre">set_xlim_from_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_xlim_from_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the same xlim for all matplotlib axes from a data object. This is equivalent to FancyPlot.set_xlim([data.df[x_key]min(), data.df[x_key]max()])</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data:       Data</strong></dt><dd><p>The data object from which the limits will be extracted</p>
+</dd>
+<dt><strong>x_key:      str</strong></dt><dd><p>The column used for the x data on the plot</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_ylabels">
+<span class="sig-name descname"><span class="pre">set_ylabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">ylabels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_ylabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the y labels for all axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>*ylabels:   str</strong></dt><dd><p>Example: set_ylabels(‘Electric Field’, ‘Temperature’, ‘Number of Breakdowns’)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.set_zorder">
+<span class="sig-name descname"><span class="pre">set_zorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.set_zorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the zorder for all axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>oder:       list of int</strong></dt><dd><p>The order for each matplotlib axis in the axs list</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.stripe">
+<span class="sig-name descname"><span class="pre">stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.9'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.stripe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an axvspan between start and end</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data:       Data</strong></dt><dd><p>The data object used in the plot</p>
+</dd>
+<dt><strong>start:      np.ndarray or double</strong></dt><dd><p>The start of the axvspan</p>
+</dd>
+<dt><strong>end:        np.ndarray or double</strong></dt><dd><p>The end of the axvspan</p>
+</dd>
+<dt><strong>ax_id:          int, default = 0</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the axvspan will be drawn</p>
+</dd>
+<dt><strong>color:          matplotlib color, default: ‘0.9’ (grey)</strong></dt><dd><p>The facecolor of the axvspan</p>
+</dd>
+<dt><strong>datetime_plot:  bool, default: False</strong></dt><dd><p>Specified whether the x axis is formated as datetime</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.stripe_files">
+<span class="sig-name descname"><span class="pre">stripe_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'timestamp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.9'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sec_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.stripe_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes axvspans that separate data from different files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data:       Data</strong></dt><dd><p>The data object used in the plot</p>
+</dd>
+<dt><strong>ax_id:          int, default = 0</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the axvspan will be drawn</p>
+</dd>
+<dt><strong>x_key:          str, default = ‘timestamp’</strong></dt><dd><p>The column used for the x axis</p>
+</dd>
+<dt><strong>color:          matplotlib color, default: ‘0.9’ (grey)</strong></dt><dd><p>The facecolor of the odd axvspans</p>
+</dd>
+<dt><strong>sec_color:      matplotlib color, default: ‘1.0’ (white)</strong></dt><dd><p>The facecolor of the even axvspans</p>
+</dd>
+<dt><strong>datetime_plot:  bool, default: False</strong></dt><dd><p>Specified whether the x axis is formated as datetime</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FancyPlot.FancyPlot.stripe_from_data">
+<span class="sig-name descname"><span class="pre">stripe_from_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'timestamp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.9'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FancyPlot.FancyPlot.stripe_from_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an axvspan between data.df[x_key].iloc[start_i] and data.df[x_key].iloc[end_i]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data:       Data</strong></dt><dd><p>The data object used in the plot</p>
+</dd>
+<dt><strong>start_i:    int</strong></dt><dd><p>The index from which to start the axvspan</p>
+</dd>
+<dt><strong>end_i:      int</strong></dt><dd><p>The index at which the axvspan ends</p>
+</dd>
+<dt><strong>x_key:          str, default = ‘timestamp’</strong></dt><dd><p>The column used for the x axis</p>
+</dd>
+<dt><strong>ax_id:          int, default = 0</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the axvspan will be drawn</p>
+</dd>
+<dt><strong>color:          matplotlib color, default: ‘0.9’ (grey)</strong></dt><dd><p>The facecolor of the axvspan</p>
+</dd>
+<dt><strong>datetime_plot:  bool, default: False</strong></dt><dd><p>Specified whether the x axis is formated as datetime</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-SparkDC.Data"></span><dl class="py class">
+<dt class="sig sig-object py" id="SparkDC.Data.Data">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SparkDC.Data.</span></span><span class="sig-name descname"><span class="pre">Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Data.Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Data Class for SparkDC Data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df: pandas.core.frame.DataFrame</strong></dt><dd><p>The data frame.
+If the argument is not present, the data object is initialized with an empty dataframe</p>
+</dd>
+<dt><strong>info_dict: dict, optional</strong></dt><dd><p>Dictionary of labels, unit and concatenation_type for the data
+Example of info_dict: {
+‘temp’:       {‘col’: 0, ‘label’: ‘Temperature’,   ‘unit’:   ‘K’,   ‘concatenation_type’: ‘normal’},
+‘all_pulses’: {‘col’: 1, ‘label’: ‘All Pulses’,    ‘unit’:   ‘’,    ‘concatenation_type’: ‘additive’}}</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#SparkDC.Data.Data.file_separators" title="SparkDC.Data.Data.file_separators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_separators</span></code></a></dt><dd><p>Get the indices corresponding to the start and end of each run.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.Data.Data.add_info_dict_entry" title="SparkDC.Data.Data.add_info_dict_entry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_info_dict_entry</span></code></a>(key[, col, label, unit, ...])</p></td>
+<td><p>Adds a new entry to the info dict</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.Data.Data.get_label_of" title="SparkDC.Data.Data.get_label_of"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_label_of</span></code></a>(key)</p></td>
+<td><p>Returns the full label for a specified key</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.Data.Data.get_unit_of" title="SparkDC.Data.Data.get_unit_of"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_unit_of</span></code></a>(key)</p></td>
+<td><p>Returns the unit for a specified key</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.Data.Data.plot" title="SparkDC.Data.Data.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(keys[, x_key, datetime_plot, ...])</p></td>
+<td><p>Plots the selected columns from the pandas dataframe of the Data obejct</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.Data.Data.read_from_files" title="SparkDC.Data.Data.read_from_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_from_files</span></code></a>(file_paths[, header, ...])</p></td>
+<td><p>Reads data from multiple files</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.Data.Data.remove_data_datetime_range" title="SparkDC.Data.Data.remove_data_datetime_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_data_datetime_range</span></code></a>(datetime_limits)</p></td>
+<td><p>Removes data outside the inclusive range datetime_limits[0], datetime_limits[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.Data.Data.remove_data_timestamp_range" title="SparkDC.Data.Data.remove_data_timestamp_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_data_timestamp_range</span></code></a>(timestamp_limits)</p></td>
+<td><p>Removes data outside the inclusive range timestamp_limits[0], timestamp_limits[1]</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.Data.Data.add_info_dict_entry">
+<span class="sig-name descname"><span class="pre">add_info_dict_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concatenation_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Data.Data.add_info_dict_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new entry to the info dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key:                    str or list</strong></dt><dd><p>The key to be added</p>
+</dd>
+<dt><strong>col:                    int, default: -1</strong></dt><dd><p>The column property of the entry. -1 means that it is a derived property</p>
+</dd>
+<dt><strong>label:                  str, default: ‘’</strong></dt><dd><p>The label property of the entry</p>
+</dd>
+<dt><strong>unit:                   str, default: ‘’</strong></dt><dd><p>The unit property of the entry</p>
+</dd>
+<dt><strong>concatenation_type:     str, default: ‘normal’</strong></dt><dd><p>The concatenation_type property of the entry</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="SparkDC.Data.Data.file_separators">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_separators</span></span><a class="headerlink" href="#SparkDC.Data.Data.file_separators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the indices corresponding to the start and end of each run. Returns a numpy array of size n_files * 2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>file_separators: numpy.ndarray</dt><dd><p>file_separators[i, 0] - the index corresponding to the start of data for each file
+file_separators[i, 1] - the index corresponding to the end of data for each file</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.Data.Data.get_label_of">
+<span class="sig-name descname"><span class="pre">get_label_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Data.Data.get_label_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the full label for a specified key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key:    string</strong></dt><dd><p>Key of data column</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>label:  string</dt><dd><p>The label for a given key</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.Data.Data.get_unit_of">
+<span class="sig-name descname"><span class="pre">get_unit_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Data.Data.get_unit_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the unit for a specified key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key:    string</strong></dt><dd><p>Key of data column</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>unit:  string</dt><dd><p>The unit for a given key</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.Data.Data.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'timestamp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timezone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Europe/Stockholm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fplot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(13,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markersize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontweight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_style_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEFAULT_STYLE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Data.Data.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the selected columns from the pandas dataframe of the Data obejct</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key:                str, list of str or list of list of str</strong></dt><dd><p>The keys corresponding to the columns to be plotted on the y axis.
+If str: The data corresponding to the key will be plotted on an axis, corresponding to ax_id
+If list of str: The data corresponding to all keys will be plotted on a single axis, corresponding to ax_id
+if list of list of str: The data corresponding to the keys from each sublist will be plotted on different axes, corresponding to ax_id</p>
+</dd>
+<dt><strong>x_key:              str, default: ‘timestamp’</strong></dt><dd><p>The key corresponding to the column to be plotted on the x axis.</p>
+</dd>
+<dt><strong>fplot               FancyPlot, default: None</strong></dt><dd><p>The fancy plot on which the plot will be drawn. If None, a new one will be created with figsize</p>
+</dd>
+<dt><strong>figsize:            tuple, default: (13, 8)</strong></dt><dd><p>The size of the figure in inches. Used only when fplot is None</p>
+</dd>
+<dt><strong>fontsize:           int, default: 12</strong></dt><dd><p>Dictionary of units for each data column.
+If not present, it is created from the structure argument</p>
+</dd>
+<dt><strong>fontweight:         [‘normal’|’bold’|’heavy’|’light’|’ultrabold’|’ultralight’], default: ‘normal’</strong></dt><dd></dd>
+<dt><strong>ax_id:              int or list of int, default = None</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the data will be plotted. If None, the axis used will be 0, 1, 2, 3…</p>
+</dd>
+<dt><strong>date_format:        str, default = ‘%m-%d %H:%M:%S’</strong></dt><dd><p>The format of the data used if datetime_plot is enabled</p>
+</dd>
+<dt><strong>timezone:           str, default = ‘Europe/Stockholm’</strong></dt><dd><p>The timezone used if if datetime_plot is enabled</p>
+</dd>
+<dt><strong>datetime_plot:      bool, default: True</strong></dt><dd><p>Specified whether the x axis is formated as datetime. If the x data are already mdates, this should be set to False</p>
+</dd>
+<dt><strong>marker:             matplotlib marker, default: None</strong></dt><dd></dd>
+<dt><strong>markersize:         int, default: 5</strong></dt><dd></dd>
+<dt><strong>linestyle:          matplotlib linestyle, default: ‘solid’</strong></dt><dd></dd>
+<dt><strong>linewidth:          int, default: 2</strong></dt><dd></dd>
+<dt><strong>color:              matplotlib color, default: None (a color is selected from the color cycle)</strong></dt><dd></dd>
+<dt><strong>labels:             str or list of str, default: None</strong></dt><dd><p>The labels of the Line2D plot. If None, get the labels from the info_dict of the Data object</p>
+</dd>
+<dt><strong>scaling_x:          double</strong></dt><dd><p>The x data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+<dt><strong>scaling_y:          double</strong></dt><dd><p>The y data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+<dt><strong>style_dict:         dict,   default: DEFAULT_STYLE</strong></dt><dd><p>The style dictionary used</p>
+</dd>
+<dt><strong>use_style_dict:     bool,   default: True</strong></dt><dd><p>If true, the proprieties of the plot will be derived from the provided style_dict</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>fplot:  FancyPlot</dt><dd><p>The FancyPlot on which the data was plotted</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.Data.Data.read_from_files">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_from_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skiprows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEFAULT_TEMPERATURE_STRUCTURE</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Data.Data.read_from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads data from multiple files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>file_paths:     str or list</strong></dt><dd><p>The filepaths from where the data will be read</p>
+</dd>
+<dt><strong>header:         int, default: None</strong></dt><dd><p>Row number(s) containing column labels and marking the start of the data (zero-indexed).</p>
+</dd>
+<dt><strong>delimiter:      char, default: ‘        ‘</strong></dt><dd><p>The delimiter used in the file.</p>
+</dd>
+<dt><strong>info_dict:      dict, optional</strong></dt><dd><p>The info_dict of the file</p>
+</dd>
+<dt><strong>engine:         str, default: ‘c’</strong></dt><dd><p>Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.</p>
+</dd>
+<dt><strong>skiprows:       int, default: 0</strong></dt><dd><p>Skips the first N rows when reading the file</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>data:   Data</dt><dd><p>Data object corresponding to the data read from the file_paths</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.Data.Data.remove_data_datetime_range">
+<span class="sig-name descname"><span class="pre">remove_data_datetime_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime_limits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y%m%d-%H%M%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timezone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Europe/Stockholm'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Data.Data.remove_data_datetime_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes data outside the inclusive range datetime_limits[0], datetime_limits[1]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>datetime_limits:    {numpy.ndarray, list}</strong></dt><dd><p>The datetime limits</p>
+</dd>
+<dt><strong>time_format:        str, default: ‘%Y%m%d-%H%M%S’</strong></dt><dd><p>The time format used in the datetime limits</p>
+</dd>
+<dt><strong>timezone:           str, default: “Europe/Stockholm”</strong></dt><dd><p>The time format used in the datetime limits</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.Data.Data.remove_data_timestamp_range">
+<span class="sig-name descname"><span class="pre">remove_data_timestamp_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timestamp_limits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Data.Data.remove_data_timestamp_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes data outside the inclusive range timestamp_limits[0], timestamp_limits[1]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>timestamp_limits:   {numpy.ndarray, list}</strong></dt><dd><p>The timestamp limits</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-SparkDC.ConditioningData"></span><dl class="py class">
+<dt class="sig sig-object py" id="SparkDC.ConditioningData.ConditioningData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SparkDC.ConditioningData.</span></span><span class="sig-name descname"><span class="pre">ConditioningData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">electrode_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.ConditioningData.ConditioningData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#SparkDC.Data.Data" title="SparkDC.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>ConditioningData Class for SparkDC Data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df: pandas.core.frame.DataFrame</strong></dt><dd><p>The data frame.
+If the argument is not present, the data object is initialized with an empty dataframe</p>
+</dd>
+<dt><strong>info_dict: dict, optional</strong></dt><dd><p>Dictionary of labels, unit and concatenation_type for the data
+Example of info_dict: {
+‘temp’:       {‘col’: 0, ‘label’: ‘Temperature’,   ‘unit’:   ‘K’,   ‘concatenation_type’: ‘normal’},
+‘all_pulses’: {‘col’: 1, ‘label’: ‘All Pulses’,    ‘unit’:   ‘’,    ‘concatenation_type’: ‘additive’}}</p>
+</dd>
+<dt><strong>electrode_name: str, default: ‘’</strong></dt><dd><p>The name of the electrode</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_separators</span></code></dt><dd><p>Get the indices corresponding to the start and end of each run.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_info_dict_entry</span></code>(key[, col, label, unit, ...])</p></td>
+<td><p>Adds a new entry to the info dict</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.ConditioningData.ConditioningData.calculate_derived_columns" title="SparkDC.ConditioningData.ConditioningData.calculate_derived_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_derived_columns</span></code></a>()</p></td>
+<td><p>(Re)calculates the derived columns: 'target_field' and 'field'</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_label_of</span></code>(key)</p></td>
+<td><p>Returns the full label for a specified key</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.ConditioningData.ConditioningData.get_run_separators" title="SparkDC.ConditioningData.ConditioningData.get_run_separators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_run_separators</span></code></a>(run_id[, key])</p></td>
+<td><p>Get the indices corresponding to the start and end of each run.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_unit_of</span></code>(key)</p></td>
+<td><p>Returns the unit for a specified key</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code>(keys[, x_key, datetime_plot, ...])</p></td>
+<td><p>Plots the selected columns from the pandas dataframe of the Data obejct</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.ConditioningData.ConditioningData.plot_standard" title="SparkDC.ConditioningData.ConditioningData.plot_standard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_standard</span></code></a>([first_axis, second_axis, ...])</p></td>
+<td><p>Make the standard plot for conditioning</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.ConditioningData.ConditioningData.read_from_files" title="SparkDC.ConditioningData.ConditioningData.read_from_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_from_files</span></code></a>(file_paths[, header, ...])</p></td>
+<td><p>Reads data from multiple files</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.ConditioningData.ConditioningData.read_runs" title="SparkDC.ConditioningData.ConditioningData.read_runs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_runs</span></code></a>(data_folder, electrode, runs[, ...])</p></td>
+<td><p>Reads the selected runs from the conditiong data folder</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_data_datetime_range</span></code>(datetime_limits)</p></td>
+<td><p>Removes data outside the inclusive range datetime_limits[0], datetime_limits[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_data_timestamp_range</span></code>(timestamp_limits)</p></td>
+<td><p>Removes data outside the inclusive range timestamp_limits[0], timestamp_limits[1]</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.ConditioningData.ConditioningData.calculate_derived_columns">
+<span class="sig-name descname"><span class="pre">calculate_derived_columns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.ConditioningData.ConditioningData.calculate_derived_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Re)calculates the derived columns: ‘target_field’ and ‘field’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.ConditioningData.ConditioningData.get_run_separators">
+<span class="sig-name descname"><span class="pre">get_run_separators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'run_id'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.ConditioningData.ConditioningData.get_run_separators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the indices corresponding to the start and end of each run. Returns a numpy array of size len(run_id) * 2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>run_id:     int or list of int</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>file_separators: int or numpy.ndarray</dt><dd><p>file_separators[i, 0] - the index corresponding to the start of data for each run
+file_separators[i, 1] - the index corresponding to the end of data for each run
+Warning: if the run_id is not found, ConditioningData.INVALID_RUN_INDEX is returned as the index</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.ConditioningData.ConditioningData.plot_standard">
+<span class="sig-name descname"><span class="pre">plot_standard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'field'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'BDs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">third_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'BDR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_third_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_third_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(20,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontweight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markersize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stripe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_runs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEFAULT_STYLE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_style_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.ConditioningData.ConditioningData.plot_standard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the standard plot for conditioning</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>first_axis:         [‘voltage’|’target_voltage’|’field’|’target_field’], default: ‘field’</strong></dt><dd><p>The key corresponding to the column to be plotted on the first axis.</p>
+</dd>
+<dt><strong>second_axis:        str, default: ‘BDs’</strong></dt><dd><p>The key corresponding to the column to be plotted on the second axis.</p>
+</dd>
+<dt><strong>third_axis:         str, default: ‘BDR’</strong></dt><dd><p>The key corresponding to the column to be plotted on the third axis.</p>
+</dd>
+<dt><strong>plot_third_axis:    bool, default: False</strong></dt><dd></dd>
+<dt><strong>log_third_axis:     bool, default: True</strong></dt><dd></dd>
+<dt><strong>figsize:            tuple, default: (13, 8)</strong></dt><dd><p>The size of the figure in inches. Used only when fplot is None</p>
+</dd>
+<dt><strong>fontsize:           int, default: 12</strong></dt><dd><p>Dictionary of units for each data column.
+If not present, it is created from the structure argument</p>
+</dd>
+<dt><strong>fontweight:         [‘normal’|’bold’|’heavy’|’light’|’ultrabold’|’ultralight’], default: ‘normal’</strong></dt><dd></dd>
+<dt><strong>marker:             matplotlib marker, default: None</strong></dt><dd></dd>
+<dt><strong>markersize:         int, default: 5</strong></dt><dd></dd>
+<dt><strong>linestyle:          matplotlib linestyle, default: ‘solid’</strong></dt><dd></dd>
+<dt><strong>linewidth:          int, default: 2</strong></dt><dd></dd>
+<dt><strong>stripe:             bool, default: True</strong></dt><dd><p>Make the axvspans corresponding to the files</p>
+</dd>
+<dt><strong>color_runs:         list of dict, default: None</strong></dt><dd><p>Make axvspans for the selected runs. Example: [{‘color’: (1, 0, 0, 0.2), ‘run’: [1,3]}, {‘color’: (0, 1, 0, 0.2), ‘run’: 2}]</p>
+</dd>
+<dt><strong>style_dict:         dict,   default: DEFAULT_STYLE</strong></dt><dd><p>The style dictionary used</p>
+</dd>
+<dt><strong>use_style_dict:     bool,   default: True</strong></dt><dd><p>If true, the proprieties of the plot will be derived from the provided style_dict</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>fplot:  FancyPlot</dt><dd><p>The FancyPlot on which the data was plotted</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.ConditioningData.ConditioningData.read_from_files">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_from_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\\s+'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skiprows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'python'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEFAULT_CONDITIONING_STRUCTURE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">electrode_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.ConditioningData.ConditioningData.read_from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads data from multiple files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>file_paths:     str or list</strong></dt><dd><p>The filepaths from where the data will be read</p>
+</dd>
+<dt><strong>header:         int, default: None</strong></dt><dd><p>Row number(s) containing column labels and marking the start of the data (zero-indexed).</p>
+</dd>
+<dt><strong>delimiter:      char, default: ‘s+’</strong></dt><dd><p>The delimiter used in the file.</p>
+</dd>
+<dt><strong>info_dict:      dict, default: DEFAULT_CONDITIONING_STRUCTURE</strong></dt><dd><p>The info_dict of the file</p>
+</dd>
+<dt><strong>engine:         str, default: ‘python’</strong></dt><dd><p>Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.</p>
+</dd>
+<dt><strong>skiprows:       int, default: 1</strong></dt><dd><p>Skips the first N rows when reading the file</p>
+</dd>
+<dt><strong>electrode_name: str, default: ‘’</strong></dt><dd><p>The name of the electrode</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>cond_data:      ConditioningData</dt><dd><p>ConditioningData object corresponding to the data read from the file_paths</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.ConditioningData.ConditioningData.read_runs">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_runs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">electrode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\\s+'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skiprows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'python'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEFAULT_CONDITIONING_STRUCTURE</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.ConditioningData.ConditioningData.read_runs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the selected runs from the conditiong data folder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data_folder:    str</strong></dt><dd><p>The path corresponding to the folder containing the conditioning data</p>
+</dd>
+<dt><strong>electrode:      str</strong></dt><dd><p>The id of the electrode</p>
+</dd>
+<dt><strong>runs:           list of int</strong></dt><dd><p>The run numbers to be read</p>
+</dd>
+<dt><strong>delimiter:      char, default: ‘s+’</strong></dt><dd><p>The delimiter used in the file.</p>
+</dd>
+<dt><strong>info_dict:      dict, default: DEFAULT_CONDITIONING_STRUCTURE</strong></dt><dd><p>The info_dict of the file</p>
+</dd>
+<dt><strong>engine:         str, default: ‘python’</strong></dt><dd><p>Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.</p>
+</dd>
+<dt><strong>skiprows:       int, default: 1</strong></dt><dd><p>Skips the first N rows when reading the file</p>
+</dd>
+<dt><strong>electrode_name: str, default: ‘’</strong></dt><dd><p>The name of the electrode</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>cond_data:      ConditioningData</dt><dd><p>ConditioningData object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-SparkDC.StatusData"></span><dl class="py class">
+<dt class="sig sig-object py" id="SparkDC.StatusData.StatusData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SparkDC.StatusData.</span></span><span class="sig-name descname"><span class="pre">StatusData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.StatusData.StatusData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#SparkDC.Data.Data" title="SparkDC.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>StatusData Class for SparkDC Data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df: pandas.core.frame.DataFrame</strong></dt><dd><p>The data frame.
+If the argument is not present, the data object is initialized with an empty dataframe</p>
+</dd>
+<dt><strong>info_dict: dict, optional</strong></dt><dd><p>Dictionary of labels, unit and concatenation_type for the data
+Example of info_dict: {‘temp’:       {‘col’: 0, ‘label’: ‘Temperature’,   ‘unit’:   ‘K’,   ‘concatenation_type’: ‘normal’},
+all_pulses’: {‘col’: 1, ‘label’: ‘All Pulses’,    ‘unit’:   ‘’,    ‘concatenation_type’: ‘additive’}}</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_separators</span></code></dt><dd><p>Get the indices corresponding to the start and end of each run.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_info_dict_entry</span></code>(key[, col, label, unit, ...])</p></td>
+<td><p>Adds a new entry to the info dict</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_label_of</span></code>(key)</p></td>
+<td><p>Returns the full label for a specified key</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_unit_of</span></code>(key)</p></td>
+<td><p>Returns the unit for a specified key</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code>(keys[, x_key, datetime_plot, ...])</p></td>
+<td><p>Plots the selected columns from the pandas dataframe of the Data obejct</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.StatusData.StatusData.read_from_files" title="SparkDC.StatusData.StatusData.read_from_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_from_files</span></code></a>(file_paths[, header, ...])</p></td>
+<td><p>Reads data from multiple files</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.StatusData.StatusData.read_from_folder_between_datetimes" title="SparkDC.StatusData.StatusData.read_from_folder_between_datetimes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_from_folder_between_datetimes</span></code></a>(...[, ...])</p></td>
+<td><p>Reads the status data between specified datetimes from folder</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.StatusData.StatusData.read_from_folder_between_timestamps" title="SparkDC.StatusData.StatusData.read_from_folder_between_timestamps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_from_folder_between_timestamps</span></code></a>(...[, ...])</p></td>
+<td><p>Reads the status data between specified timestamps from folder</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_data_datetime_range</span></code>(datetime_limits)</p></td>
+<td><p>Removes data outside the inclusive range datetime_limits[0], datetime_limits[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_data_timestamp_range</span></code>(timestamp_limits)</p></td>
+<td><p>Removes data outside the inclusive range timestamp_limits[0], timestamp_limits[1]</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.StatusData.StatusData.read_from_files">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_from_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skiprows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEFAULT_TEMPERATURE_STRUCTURE</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.StatusData.StatusData.read_from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads data from multiple files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>file_paths:     str or list</strong></dt><dd><p>The filepaths from where the data will be read</p>
+</dd>
+<dt><strong>header:         int, default: 0</strong></dt><dd><p>Row number(s) containing column labels and marking the start of the data (zero-indexed).</p>
+</dd>
+<dt><strong>delimiter:      char, default: ‘        ‘</strong></dt><dd><p>The delimiter used in the file.</p>
+</dd>
+<dt><strong>info_dict:      dict, optional</strong></dt><dd><p>The info_dict of the file</p>
+</dd>
+<dt><strong>engine:         str, default: ‘c’</strong></dt><dd><p>Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.</p>
+</dd>
+<dt><strong>skiprows:       int, default: 0</strong></dt><dd><p>Skips the first N rows when reading the file</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>temp_data:      StatusData</dt><dd><p>StatusData object corresponding to the data read from the file_paths</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.StatusData.StatusData.read_from_folder_between_datetimes">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_from_folder_between_datetimes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_limits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y%m%d-%H%M%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timezone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Europe/Stockholm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descending_search</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skiprows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEFAULT_TEMPERATURE_STRUCTURE</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.StatusData.StatusData.read_from_folder_between_datetimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the status data between specified datetimes from folder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>folder_path:        str</strong></dt><dd><p>The path of the folder containing the CryoDC status data</p>
+</dd>
+<dt><strong>datetime_limits:    list of str</strong></dt><dd><p>Read the data between datetime_limits[0] and datetime_limits[1]</p>
+</dd>
+<dt><strong>time_format:        str, default: ‘%Y%m%d-%H%M%S’</strong></dt><dd><p>The time format string used to specify the datetime_limits</p>
+</dd>
+<dt><strong>timezone:           str, default: ‘Europe/Stockholm’</strong></dt><dd><p>The timezone corresponding to the datetime in the name of the files and to the datetimes in datetime_limits</p>
+</dd>
+<dt><strong>header:             int, default: None</strong></dt><dd><p>Row number(s) containing column labels and marking the start of the data (zero-indexed).</p>
+</dd>
+<dt><strong>delimiter:          char, default: ‘    ‘</strong></dt><dd><p>The delimiter used in the file.</p>
+</dd>
+<dt><strong>info_dict:          dict, default: DEFAULT_TEMPERATURE_STRUCTURE</strong></dt><dd><p>The info_dict of the file</p>
+</dd>
+<dt><strong>engine:             str, default: ‘c’</strong></dt><dd><p>Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.</p>
+</dd>
+<dt><strong>skiprows:           int, default: 0</strong></dt><dd><p>Skips the first N rows when reading the file</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>data:               StatusData</dt><dd><p>StatusData object corresponding to the data read from the file_paths</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.StatusData.StatusData.read_from_folder_between_timestamps">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_from_folder_between_timestamps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp_limits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timezone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Europe/Stockholm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descending_search</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skiprows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEFAULT_TEMPERATURE_STRUCTURE</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.StatusData.StatusData.read_from_folder_between_timestamps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the status data between specified timestamps from folder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>folder_path:        str</strong></dt><dd><p>The path of the folder containing the CryoDC status data</p>
+</dd>
+<dt><strong>timestamp_limits:   list of double</strong></dt><dd><p>Read the data between timestamp_limits[0] and timestamp_limits[1]</p>
+</dd>
+<dt><strong>timezone:           str, default: ‘Europe/Stockholm’</strong></dt><dd><p>The timezone corresponding to the datetime in the name of the files</p>
+</dd>
+<dt><strong>header:             int, default: None</strong></dt><dd><p>Row number(s) containing column labels and marking the start of the data (zero-indexed).</p>
+</dd>
+<dt><strong>delimiter:          char, default: ‘    ‘</strong></dt><dd><p>The delimiter used in the file.</p>
+</dd>
+<dt><strong>info_dict:          dict, default: DEFAULT_TEMPERATURE_STRUCTURE</strong></dt><dd><p>The info_dict of the file</p>
+</dd>
+<dt><strong>engine:             str, default: ‘c’</strong></dt><dd><p>Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.</p>
+</dd>
+<dt><strong>skiprows:           int, default: 0</strong></dt><dd><p>Skips the first N rows when reading the file</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>data:               StatusData</dt><dd><p>StatusData object corresponding to the data read from the file_paths</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-SparkDC.FieldEmissionData"></span><dl class="py class">
+<dt class="sig sig-object py" id="SparkDC.FieldEmissionData.FieldEmissionData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SparkDC.FieldEmissionData.</span></span><span class="sig-name descname"><span class="pre">FieldEmissionData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_limiting_resistor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FieldEmissionData.FieldEmissionData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#SparkDC.Data.Data" title="SparkDC.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>FieldEmissionData Class for SparkDC Data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df:                                 pandas.core.frame.DataFrame</strong></dt><dd><p>The data frame.
+If the argument is not present, the data object is initialized with an empty dataframe</p>
+</dd>
+<dt><strong>info_dict:                          dict, optional</strong></dt><dd><p>Dictionary of labels, unit and concatenation_type for the data
+Example of info_dict: {
+‘temp’:       {‘col’: 0, ‘label’: ‘Temperature’,   ‘unit’:   ‘K’,   ‘concatenation_type’: ‘normal’},
+‘all_pulses’: {‘col’: 1, ‘label’: ‘All Pulses’,    ‘unit’:   ‘’,    ‘concatenation_type’: ‘additive’}}</p>
+</dd>
+<dt><strong>gap:                                double, default: 60</strong></dt><dd><p>The length of the gap between the electrodes in um</p>
+</dd>
+<dt><strong>current_limiting_resistor:          double, default: 0</strong></dt><dd><p>The value of the current limiting resistor used in the measurements.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_separators</span></code></dt><dd><p>Get the indices corresponding to the start and end of each run.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_info_dict_entry</span></code>(key[, col, label, unit, ...])</p></td>
+<td><p>Adds a new entry to the info dict</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FieldEmissionData.FieldEmissionData.calculate_derived_columns" title="SparkDC.FieldEmissionData.FieldEmissionData.calculate_derived_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_derived_columns</span></code></a>()</p></td>
+<td><p>(Re)calculates the derived columns: 'field', 'true_voltage', 'true_field'</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_label_of</span></code>(key)</p></td>
+<td><p>Returns the full label for a specified key</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_unit_of</span></code>(key)</p></td>
+<td><p>Returns the unit for a specified key</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code>(keys[, x_key, datetime_plot, ...])</p></td>
+<td><p>Plots the selected columns from the pandas dataframe of the Data obejct</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.FieldEmissionData.FieldEmissionData.plot_IV" title="SparkDC.FieldEmissionData.FieldEmissionData.plot_IV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_IV</span></code></a>([x_key, fplot, FN_plot, minI, ...])</p></td>
+<td><p>Plots the selected columns from the pandas dataframe of the Data obejct</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.FieldEmissionData.FieldEmissionData.read_from_files" title="SparkDC.FieldEmissionData.FieldEmissionData.read_from_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_from_files</span></code></a>(file_paths[, header, ...])</p></td>
+<td><p>Reads data from multiple files</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_data_datetime_range</span></code>(datetime_limits)</p></td>
+<td><p>Removes data outside the inclusive range datetime_limits[0], datetime_limits[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_data_timestamp_range</span></code>(timestamp_limits)</p></td>
+<td><p>Removes data outside the inclusive range timestamp_limits[0], timestamp_limits[1]</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FieldEmissionData.FieldEmissionData.calculate_derived_columns">
+<span class="sig-name descname"><span class="pre">calculate_derived_columns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FieldEmissionData.FieldEmissionData.calculate_derived_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Re)calculates the derived columns: ‘field’, ‘true_voltage’, ‘true_field’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FieldEmissionData.FieldEmissionData.plot_IV">
+<span class="sig-name descname"><span class="pre">plot_IV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'true_field'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fplot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FN_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minI</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1E-3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(13,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markersize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontweight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FieldEmissionData.FieldEmissionData.plot_IV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the selected columns from the pandas dataframe of the Data obejct</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x_key:              [‘true_field’|’true_voltage’], default: ‘true_field’</strong></dt><dd><p>The key corresponding to the column to be plotted on the x axis</p>
+</dd>
+<dt><strong>FN_plot:            bool, default: False</strong></dt><dd><p>If True, plot in the Fowler-Nordheim format</p>
+</dd>
+<dt><strong>minI:               double, default: 1E-3</strong></dt><dd><p>If FN_plot = True, the current bellow this value will not be plotted. Units: mA</p>
+</dd>
+<dt><strong>fplot               FancyPlot, default: None</strong></dt><dd><p>The fancy plot on which the plot will be drawn. If None, a new one will be created with figsize</p>
+</dd>
+<dt><strong>figsize:            tuple, default: (13, 8)</strong></dt><dd><p>The size of the figure in inches. Used only when fplot is None</p>
+</dd>
+<dt><strong>fontsize:           int, default: 12</strong></dt><dd><p>Dictionary of units for each data column.
+If not present, it is created from the structure argument</p>
+</dd>
+<dt><strong>fontweight:         [‘normal’|’bold’|’heavy’|’light’|’ultrabold’|’ultralight’], default: ‘normal’</strong></dt><dd></dd>
+<dt><strong>ax_id:              int or list of int, default = None</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the data will be plotted. If None, the axis used will be 0, 1, 2, 3…</p>
+</dd>
+<dt><strong>marker:             matplotlib marker, default: None</strong></dt><dd></dd>
+<dt><strong>markersize:         int, default: 5</strong></dt><dd></dd>
+<dt><strong>linestyle:          matplotlib linestyle, default: ‘solid’</strong></dt><dd></dd>
+<dt><strong>linewidth:          int, default: 2</strong></dt><dd></dd>
+<dt><strong>color:              matplotlib color, default: None (a color is selected from the color cycle)</strong></dt><dd></dd>
+<dt><strong>label:              str, default: None</strong></dt><dd><p>The labels of the Line2D plot.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>fplot:  FancyPlot</dt><dd><p>The FancyPlot on which the data was plotted</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.FieldEmissionData.FieldEmissionData.read_from_files">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_from_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skiprows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEFAULT_FE_STRUCTURE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_limiting_resistor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.FieldEmissionData.FieldEmissionData.read_from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads data from multiple files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>file_paths:     str or list</strong></dt><dd><p>The filepaths from where the data will be read</p>
+</dd>
+<dt><strong>header:         int, default: None</strong></dt><dd><p>Row number(s) containing column labels and marking the start of the data (zero-indexed).</p>
+</dd>
+<dt><strong>delimiter:      char, default: ‘        ‘</strong></dt><dd><p>The delimiter used in the file.</p>
+</dd>
+<dt><strong>info_dict:      dict, default: DEFAULT_FE_STRUCTURE</strong></dt><dd><p>The info_dict of the file</p>
+</dd>
+<dt><strong>engine:         str, default: ‘c’</strong></dt><dd><p>Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.</p>
+</dd>
+<dt><strong>skiprows:       int, default: 0</strong></dt><dd><p>Skips the first N rows when reading the file</p>
+</dd>
+<dt><strong>gap:                                double, default: 60</strong></dt><dd><p>The length of the gap between the electrodes in um</p>
+</dd>
+<dt><strong>current_limiting_resistor:          double, default: 0</strong></dt><dd><p>The value of the current limiting resistor used in the measurements.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>data:   FieldEmissionData</dt><dd><p>FieldEmissionData object corresponding to the data read from the file_paths</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-SparkDC.RGAData"></span><dl class="py class">
+<dt class="sig sig-object py" id="SparkDC.RGAData.RGAData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SparkDC.RGAData.</span></span><span class="sig-name descname"><span class="pre">RGAData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.RGAData.RGAData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#SparkDC.Data.Data" title="SparkDC.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>StatusData Class for SparkDC Data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df: pandas.core.frame.DataFrame</strong></dt><dd><p>The data frame.
+If the argument is not present, the data object is initialized with an empty dataframe</p>
+</dd>
+<dt><strong>info_dict: dict, optional</strong></dt><dd><p>Dictionary of labels, unit and concatenation_type for the data
+Example of info_dict: {
+‘temp’:       {‘col’: 0, ‘label’: ‘Temperature’,   ‘unit’:   ‘K’,   ‘concatenation_type’: ‘normal’},
+‘all_pulses’: {‘col’: 1, ‘label’: ‘All Pulses’,    ‘unit’:   ‘’,    ‘concatenation_type’: ‘additive’}}</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">file_separators</span></code></dt><dd><p>Get the indices corresponding to the start and end of each run.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_info_dict_entry</span></code>(key[, col, label, unit, ...])</p></td>
+<td><p>Adds a new entry to the info dict</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.RGAData.RGAData.calculate_derived_columns" title="SparkDC.RGAData.RGAData.calculate_derived_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_derived_columns</span></code></a>()</p></td>
+<td><p>(Re)calculates the derived columns: 'pressure_mbar'</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_label_of</span></code>(key)</p></td>
+<td><p>Returns the full label for a specified key</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.RGAData.RGAData.get_subset_amu" title="SparkDC.RGAData.RGAData.get_subset_amu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_subset_amu</span></code></a>(mass)</p></td>
+<td><p>Returns a new RGAData, containing only the data for a specified mass</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_unit_of</span></code>(key)</p></td>
+<td><p>Returns the unit for a specified key</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code>(keys[, x_key, datetime_plot, ...])</p></td>
+<td><p>Plots the selected columns from the pandas dataframe of the Data obejct</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.RGAData.RGAData.plot_masses" title="SparkDC.RGAData.RGAData.plot_masses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_masses</span></code></a>(masses[, key, x_key, ...])</p></td>
+<td><p>Plots the data for a specified mass</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#SparkDC.RGAData.RGAData.read_from_file" title="SparkDC.RGAData.RGAData.read_from_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_from_file</span></code></a>(filename[, header, ...])</p></td>
+<td><p>Reads data from a single file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#SparkDC.RGAData.RGAData.read_from_files" title="SparkDC.RGAData.RGAData.read_from_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_from_files</span></code></a>()</p></td>
+<td><p>To be implemented</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_data_datetime_range</span></code>(datetime_limits)</p></td>
+<td><p>Removes data outside the inclusive range datetime_limits[0], datetime_limits[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_data_timestamp_range</span></code>(timestamp_limits)</p></td>
+<td><p>Removes data outside the inclusive range timestamp_limits[0], timestamp_limits[1]</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.RGAData.RGAData.calculate_derived_columns">
+<span class="sig-name descname"><span class="pre">calculate_derived_columns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.RGAData.RGAData.calculate_derived_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Re)calculates the derived columns: ‘pressure_mbar’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.RGAData.RGAData.get_subset_amu">
+<span class="sig-name descname"><span class="pre">get_subset_amu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mass</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.RGAData.RGAData.get_subset_amu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new RGAData, containing only the data for a specified mass</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mass:           double</strong></dt><dd><p>The mass in amu.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>subset:         RGAData</dt><dd><p>RGAData object corresponding to the data for the specified mass</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.RGAData.RGAData.plot_masses">
+<span class="sig-name descname"><span class="pre">plot_masses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">masses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pressure_mbar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'timestamp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timezone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Europe/Stockholm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fplot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(13,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontweight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'None'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markersize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.RGAData.RGAData.plot_masses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the data for a specified mass</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>masses:             double or list of double</strong></dt><dd><p>The masses in amu.</p>
+</dd>
+<dt><strong>key:                str, default: ‘pressure_mbar’</strong></dt><dd></dd>
+<dt><strong>x_key:              str, default: ‘timestamp’</strong></dt><dd><p>The key corresponding to the column to be plotted on the x axis.</p>
+</dd>
+<dt><strong>fplot               FancyPlot, default: None</strong></dt><dd><p>The fancy plot on which the plot will be drawn. If None, a new one will be created with figsize</p>
+</dd>
+<dt><strong>figsize:            tuple, default: (13, 8)</strong></dt><dd><p>The size of the figure in inches. Used only when fplot is None</p>
+</dd>
+<dt><strong>fontsize:           int, default: 12</strong></dt><dd><p>Dictionary of units for each data column.
+If not present, it is created from the structure argument</p>
+</dd>
+<dt><strong>fontweight:         [‘normal’|’bold’|’heavy’|’light’|’ultrabold’|’ultralight’], default: ‘normal’</strong></dt><dd></dd>
+<dt><strong>ax_id:              int or list of int, default = None</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the data will be plotted. If None, the axis used will be 0, 1, 2, 3…</p>
+</dd>
+<dt><strong>date_format:        str, default = ‘%m-%d %H:%M:%S’</strong></dt><dd><p>The format of the data used if datetime_plot is enabled</p>
+</dd>
+<dt><strong>timezone:           str, default = ‘Europe/Stockholm’</strong></dt><dd><p>The timezone used if if datetime_plot is enabled</p>
+</dd>
+<dt><strong>datetime_plot:      bool, default: True</strong></dt><dd><p>Specified whether the x axis is formated as datetime. If the x data are already mdates, this should be set to False</p>
+</dd>
+<dt><strong>marker:             matplotlib marker, default: None</strong></dt><dd></dd>
+<dt><strong>markersize:         int, default: 5</strong></dt><dd></dd>
+<dt><strong>linestyle:          matplotlib linestyle, default: ‘solid’</strong></dt><dd></dd>
+<dt><strong>linewidth:          int, default: 2</strong></dt><dd></dd>
+<dt><strong>color:              matplotlib color, default: None (a color is selected from the color cycle)</strong></dt><dd></dd>
+<dt><strong>labels:             str or list of str, default: None</strong></dt><dd><p>The labels of the Line2D plot. If None, get the labels from the info_dict of the Data object</p>
+</dd>
+<dt><strong>scaling_x:          double</strong></dt><dd><p>The x data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+<dt><strong>scaling_y:          double</strong></dt><dd><p>The y data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+<dt><strong>style_dict:         dict,   default: DEFAULT_STYLE</strong></dt><dd><p>The style dictionary used</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>fplot:          FancyPlot</dt><dd><p>The plot on which the data was plotted</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.RGAData.RGAData.read_from_file">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skiprows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">22</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEFAULT_RGA_STRUCTURE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timezone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Europe/Stockholm'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.RGAData.RGAData.read_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads data from a single file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filename:       str</strong></dt><dd><p>The filepath from where the data will be read</p>
+</dd>
+<dt><strong>timezone:       str</strong></dt><dd><p>The timezone used when data was taken. It is needed because the file contains the time when the scan was started</p>
+</dd>
+<dt><strong>header:         int, default: None</strong></dt><dd><p>Row number(s) containing column labels and marking the start of the data (zero-indexed).</p>
+</dd>
+<dt><strong>delimiter:      char, default: ‘,’</strong></dt><dd><p>The delimiter used in the file.</p>
+</dd>
+<dt><strong>info_dict:      dict, default: DEFAULT_RGA_STRUCTURE</strong></dt><dd><p>The info_dict of the file</p>
+</dd>
+<dt><strong>engine:         str, default: ‘c’</strong></dt><dd><p>Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.</p>
+</dd>
+<dt><strong>skiprows:       int, default: 22</strong></dt><dd><p>Skips the first N rows when reading the file</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>data:           RGAData</dt><dd><p>RGAData object corresponding to the data read from the file path</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SparkDC.RGAData.RGAData.read_from_files">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_from_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.RGAData.RGAData.read_from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>To be implemented</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-SparkDC.Utils"></span><dl class="py function">
+<dt class="sig sig-object py" id="SparkDC.Utils.dim">
+<span class="sig-prename descclassname"><span class="pre">SparkDC.Utils.</span></span><span class="sig-name descname"><span class="pre">dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Utils.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the dimesion of a python list, a pandas.Series or a numpy.ndarray</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a:                  list, pandas.Series, numpy.ndarray</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>dim:                list</dt><dd><p>The dimensions of the list/array/Series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="SparkDC.Utils.duplicate_like">
+<span class="sig-prename descclassname"><span class="pre">SparkDC.Utils.</span></span><span class="sig-name descname"><span class="pre">duplicate_like</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Utils.duplicate_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a list, it returns a new list with the same shape, but filled with the requested item</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>array:              list</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>new_array:          list</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="SparkDC.Utils.fix_gaps_between_files">
+<span class="sig-prename descclassname"><span class="pre">SparkDC.Utils.</span></span><span class="sig-name descname"><span class="pre">fix_gaps_between_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Utils.fix_gaps_between_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fixes the data for plotting. It adds n-1 data points in between data corresponding to different files. If add_nan it adds a nan, otherwise it copies the previous data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key:                str</strong></dt><dd><p>The key corresponding to the column to be plotted on the y axis</p>
+</dd>
+<dt><strong>add_nan:            bool, default: True</strong></dt><dd><p>If True, add a NaN value at the end of the data corresponding to each file. Otherwise, copy the previous value</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>new_x:              numpy.ndarray</dt><dd><p>The fixed array</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="SparkDC.Utils.fix_parameter_list">
+<span class="sig-prename descclassname"><span class="pre">SparkDC.Utils.</span></span><span class="sig-name descname"><span class="pre">fix_parameter_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Utils.fix_parameter_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>The parameter lists, such as the colors or the linestyles can be given in different formats then the keys corresponding to the data to be plotted.
+This function attemps to cast the parameter array in the same shape as the keys array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>keys:              str, list of str, or list of list of str</strong></dt><dd></dd>
+<dt><strong>param_array:       str, list of str, or list of list of str</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>new_param_array:   list of list of str</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="SparkDC.Utils.get_concatenation_type_columns">
+<span class="sig-prename descclassname"><span class="pre">SparkDC.Utils.</span></span><span class="sig-name descname"><span class="pre">get_concatenation_type_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Utils.get_concatenation_type_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the keys from info_dict which have the concatenation_type set to a specified type. Warning: It requires a completely filled dictionary!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>info_dict:          dict</strong></dt><dd></dd>
+<dt><strong>type:               [‘normal’|’additive’]</strong></dt><dd><p>The concatenation type for which we want to obtain the keys</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>columns:           list</dt><dd><p>list of columns that have the concatenation_type of the specified type</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="SparkDC.Utils.get_from_info_dict">
+<span class="sig-prename descclassname"><span class="pre">SparkDC.Utils.</span></span><span class="sig-name descname"><span class="pre">get_from_info_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Utils.get_from_info_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the values from a dictionary of subdictionaries</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>info_dict:          dict</strong></dt><dd></dd>
+<dt><strong>property:           str</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>props:             list</dt><dd><p>list of values</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="SparkDC.Utils.get_keys_info_dict">
+<span class="sig-prename descclassname"><span class="pre">SparkDC.Utils.</span></span><span class="sig-name descname"><span class="pre">get_keys_info_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Utils.get_keys_info_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all the keys from a specified dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>info_dict:          dict</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>props:             list</dt><dd><p>list of keys from dictionary</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="SparkDC.Utils.len_of_sublists">
+<span class="sig-prename descclassname"><span class="pre">SparkDC.Utils.</span></span><span class="sig-name descname"><span class="pre">len_of_sublists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SparkDC.Utils.len_of_sublists" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a list of lists, return the dimension of each sublist</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>list:               list</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>length:             list</dt><dd><p>The dimension of each sublist in list</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">PySparkDC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2024, Mircea Coman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
