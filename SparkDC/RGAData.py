@@ -6,29 +6,29 @@ from zoneinfo import ZoneInfo
 import matplotlib.pyplot as plt
 
 from . import Data
-from .default_file_structures import DEFAULT_RGA_STRUCTURE
+from .Defaults import DEFAULT_RGA_STRUCTURE
 from . import Utils
 
 TORR_TO_MBAR = 1.33322368
 
 class RGAData(Data):
-    def __init__(self, *args):
-        """
-        Initializer for the StatusData Class
-        Parameters
-        ----------
-        df: pandas.core.frame.DataFrame
-            The data frame.
-            If the argument is not present, the data object is initialized with an empty dataframe
-        info_dict: dict, optional
-            Dictionary of labels, unit and concatenation_type for the data
-            Example of info_dict:
-            {
-                'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
-                'all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'},
-            }
+    """
+    StatusData Class for SparkDC Data
 
-        """
+    Parameters
+    ----------
+    df: pandas.core.frame.DataFrame
+        The data frame.
+        If the argument is not present, the data object is initialized with an empty dataframe
+    info_dict: dict, optional
+        Dictionary of labels, unit and concatenation_type for the data
+        Example of info_dict: {
+        'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
+        'all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'}}
+
+    """
+
+    def __init__(self, *args):
         super().__init__(*args)
         self.calculate_derived_columns()
 
@@ -135,6 +135,7 @@ class RGAData(Data):
     def read_from_file(filename, header = None, delimiter = ',', skiprows = 22, engine ='c', info_dict = DEFAULT_RGA_STRUCTURE, timezone = "Europe/Stockholm"):
         """
         Reads data from a single file
+
         Parameters
         ----------
         filename:       str
@@ -151,6 +152,7 @@ class RGAData(Data):
                         Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.
         skiprows:       int, default: 22
                         Skips the first N rows when reading the file
+
         Returns
         -------
         data:           RGAData
@@ -184,6 +186,7 @@ class RGAData(Data):
     def __get_data_from_line__(line, indices, sep = ',', type = 'float'):
         """
         Obtains the value found at the columns indexed by the indices from a line
+
         Parameters
         ----------
         line:           str

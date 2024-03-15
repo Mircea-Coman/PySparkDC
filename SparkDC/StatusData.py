@@ -8,27 +8,25 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.dates import DateFormatter
 
-from .default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
+from .Defaults import DEFAULT_TEMPERATURE_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
 from . import Data
 
 class StatusData(Data):
-    def __init__(self, *args):
-        """
-        Initializer for the StatusData Class
-        Parameters
-        ----------
-        df: pandas.core.frame.DataFrame
-            The data frame.
-            If the argument is not present, the data object is initialized with an empty dataframe
-        info_dict: dict, optional
-            Dictionary of labels, unit and concatenation_type for the data
-            Example of info_dict:
-            {
-                'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
-                'all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'},
-            }
+    """
+    StatusData Class for SparkDC Data
 
-        """
+    Parameters
+    ----------
+    df: pandas.core.frame.DataFrame
+        The data frame.
+        If the argument is not present, the data object is initialized with an empty dataframe
+    info_dict: dict, optional
+        Dictionary of labels, unit and concatenation_type for the data
+        Example of info_dict: {'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
+        all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'}}
+
+    """
+    def __init__(self, *args):
         super().__init__(*args)
 
 
@@ -36,6 +34,7 @@ class StatusData(Data):
     def read_from_files(file_paths, header = None, delimiter = '\t', engine = 'c', skiprows = 0, info_dict = DEFAULT_TEMPERATURE_STRUCTURE):
         """
         Reads data from multiple files
+
         Parameters
         ----------
         file_paths:     str or list
@@ -50,6 +49,7 @@ class StatusData(Data):
                         Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.
         skiprows:       int, default: 0
                         Skips the first N rows when reading the file
+
         Returns
         -------
         temp_data:      StatusData
@@ -65,6 +65,7 @@ class StatusData(Data):
      descending_search = True, header = None, delimiter = '\t', skiprows = 0, engine = 'c', info_dict = DEFAULT_TEMPERATURE_STRUCTURE):
         """
         Reads the status data between specified timestamps from folder
+
         Parameters
         ----------
         folder_path:        str
@@ -83,6 +84,7 @@ class StatusData(Data):
                             Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.
         skiprows:           int, default: 0
                             Skips the first N rows when reading the file
+
         Returns
         -------
         data:               StatusData
@@ -143,6 +145,7 @@ class StatusData(Data):
     descending_search = True, header = None, delimiter = '\t', skiprows = 0, engine = 'c', info_dict = DEFAULT_TEMPERATURE_STRUCTURE):
         """
         Reads the status data between specified datetimes from folder
+
         Parameters
         ----------
         folder_path:        str
@@ -163,6 +166,7 @@ class StatusData(Data):
                             Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.
         skiprows:           int, default: 0
                             Skips the first N rows when reading the file
+
         Returns
         -------
         data:               StatusData

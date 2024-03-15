@@ -5,4 +5,4 @@ from .ConditioningData import ConditioningData
 from .RGAData import RGAData
 from .StatusData import StatusData
 from .Utils import *
-from .default_file_structures import *
+from .Defaults import *

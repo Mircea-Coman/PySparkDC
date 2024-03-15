@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 
 from . import Data
-from .default_file_structures import DEFAULT_CONDITIONING_STRUCTURE, DEFAULT_STYLE, LABVIEW_TIMESTAMP_OFFSET
+from .Defaults import DEFAULT_CONDITIONING_STRUCTURE, DEFAULT_STYLE, LABVIEW_TIMESTAMP_OFFSET
 from . import Utils
 
 
@@ -13,25 +13,25 @@ DEFAULT_FILENAME = 'Marx_data.txt' # the filename containing the data from the M
 INVALID_RUN_INDEX = -99999
 
 class ConditioningData(Data):
-    def __init__(self, *args, electrode_name = ''):
-        """
-        Initializer for the ConditioningData Class
-        Parameters
-        ----------
-        df: pandas.core.frame.DataFrame
-            The data frame.
-            If the argument is not present, the data object is initialized with an empty dataframe
-        info_dict: dict, optional
-            Dictionary of labels, unit and concatenation_type for the data
-            Example of info_dict:
-            {
-                'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
-                'all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'},
-            }
+    """
+    ConditioningData Class for SparkDC Data
 
-        electrode_name: str, default: ''
-                             The name of the electrode
-        """
+    Parameters
+    ----------
+    df: pandas.core.frame.DataFrame
+        The data frame.
+        If the argument is not present, the data object is initialized with an empty dataframe
+    info_dict: dict, optional
+        Dictionary of labels, unit and concatenation_type for the data
+        Example of info_dict: {
+        'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
+        'all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'}}
+
+    electrode_name: str, default: ''
+                         The name of the electrode
+    """
+
+    def __init__(self, *args, electrode_name = ''):
         self.electrode_name = electrode_name
         super().__init__(*args)
         self.calculate_derived_columns()
@@ -141,11 +141,14 @@ class ConditioningData(Data):
         elif first_axis == 'output_voltage' or first_axis == 'target_voltage':
             fplot.set_axis_ylabel(0, 'Voltage [V]')
 
-        if second_axis == 'BDs':
-            fplot.set_axis_ylabel(1, 'Voltage [V]')
+        fplot.set_spine_color(0, style_dict[first_axis]['color'])
 
+        if second_axis == 'BDs':
+            fplot.set_axis_ylabel(1, 'Number of Breakdowns')
+            fplot.set_spine_color(1, style_dict['BDs']['color'])
         if third_axis == 'BDR' and plot_third_axis:
-            fplot.set_axis_ylabel(2, 'Number of Breakdowns')
+            fplot.set_axis_ylabel(2, 'Breakdown Rate')
+            fplot.set_spine_color(2, style_dict['BDR']['color'])
 
         if log_third_axis and plot_third_axis:
             fplot.set_axis_yscale(2, 'log')
@@ -179,6 +182,7 @@ class ConditioningData(Data):
     def read_from_files(file_paths, header = None, delimiter = '\s+', skiprows = 1, engine ='python', info_dict = DEFAULT_CONDITIONING_STRUCTURE, electrode_name = ''):
         """
         Reads data from multiple files
+
         Parameters
         ----------
         file_paths:     str or list
@@ -195,6 +199,7 @@ class ConditioningData(Data):
                         Skips the first N rows when reading the file
         electrode_name: str, default: ''
                              The name of the electrode
+
         Returns
         -------
         cond_data:      ConditioningData
@@ -208,6 +213,7 @@ class ConditioningData(Data):
     def read_runs(data_folder, electrode, runs, header = None, delimiter = '\s+', skiprows = 1, engine ='python', info_dict = DEFAULT_CONDITIONING_STRUCTURE):
         """
         Reads the selected runs from the conditiong data folder
+
         Parameters
         ----------
         data_folder:    str
@@ -226,6 +232,7 @@ class ConditioningData(Data):
                         Skips the first N rows when reading the file
         electrode_name: str, default: ''
                              The name of the electrode
+
         Returns
         -------
         cond_data:      ConditioningData

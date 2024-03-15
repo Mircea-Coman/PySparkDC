@@ -9,26 +9,25 @@ import datetime
 
 from . import Utils
 from . import FancyPlot
-from .default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_STYLE
+from .Defaults import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_STYLE
 
 class Data:
+    """
+    Data Class for SparkDC Data
+
+    Parameters
+    ----------
+    df: pandas.core.frame.DataFrame
+        The data frame.
+        If the argument is not present, the data object is initialized with an empty dataframe
+    info_dict: dict, optional
+        Dictionary of labels, unit and concatenation_type for the data
+        Example of info_dict: {
+        'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
+        'all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'}}
+    """
 
     def __init__(self, df, info_dict):
-        """
-        Initializer for the Data Class
-        Parameters
-        ----------
-        df: pandas.core.frame.DataFrame
-            The data frame.
-            If the argument is not present, the data object is initialized with an empty dataframe
-        info_dict: dict, optional
-            Dictionary of labels, unit and concatenation_type for the data
-            Example of info_dict:
-            {
-                'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
-                'all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'},
-            }
-        """
         self.df = df
         self.info_dict = info_dict
 
@@ -117,12 +116,19 @@ class Data:
         fplot:  FancyPlot
                 The FancyPlot on which the data was plotted
         """
-        if len(Utils.dim(keys)) == 0:
-            n_ax = 0
-        else:
+        dim_keys = Utils.dim(keys)
+        if len(dim_keys) == 0:
+            n_ax = 1
+        elif len(dim_keys) == 1:
+            n_ax = 1
+        elif len(dim_keys) == 2:
             n_ax = Utils.dim(keys)[0]
+        else:
+            raise ValueError('Invalid keys list in plot()')
+
         if fplot is None:
             fplot = FancyPlot(n_ax = n_ax, figsize = figsize, style_dict = DEFAULT_STYLE, fontweight = fontweight, fontsize = fontsize)
+
         fplot.plot_data(self, keys,  x_key = x_key, datetime_plot = datetime_plot, date_format = date_format, timezone = timezone, \
                 ax_id = ax_id, marker = marker, markersize = markersize, linestyle = linestyle, linewidth = linewidth, color = color, labels = labels, \
                 use_style_dict = use_style_dict, scaling_x = scaling_x, scaling_y = scaling_y)
@@ -165,10 +171,12 @@ class Data:
     def get_label_of(self, key):
         """
         Returns the full label for a specified key
+
         Parameters
         ----------
         key:    string
                 Key of data column
+
         Returns
         -------
         label:  string
@@ -183,10 +191,12 @@ class Data:
     def get_unit_of(self, key):
         """
         Returns the unit for a specified key
+
         Parameters
         ----------
         key:    string
                 Key of data column
+
         Returns
         -------
         unit:  string
@@ -199,6 +209,23 @@ class Data:
             raise AttributeError(f"'{key}' is not a valid data field!")
 
     def add_info_dict_entry(self, key, col = -1, label = '', unit = '', concatenation_type = 'normal'):
+        """
+        Adds a new entry to the info dict
+
+        Parameters
+        ----------
+        key:                    str or list
+                                The key to be added
+        col:                    int, default: -1
+                                The column property of the entry. -1 means that it is a derived property
+        label:                  str, default: ''
+                                The label property of the entry
+        unit:                   str, default: ''
+                                The unit property of the entry
+        concatenation_type:     str, default: 'normal'
+                                The concatenation_type property of the entry
+        """
+
         subdict = {'col': col, 'label': label, 'unit': unit, 'concatenation_type': concatenation_type}
         self.info_dict[key] = subdict
 
@@ -206,6 +233,7 @@ class Data:
     def read_from_files(file_paths, header = None, delimiter = '\t', engine = 'c', skiprows = 0, info_dict = DEFAULT_TEMPERATURE_STRUCTURE):
         """
         Reads data from multiple files
+
         Parameters
         ----------
         file_paths:     str or list
@@ -220,6 +248,7 @@ class Data:
                         Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.
         skiprows:       int, default: 0
                         Skips the first N rows when reading the file
+
         Returns
         -------
         data:   Data

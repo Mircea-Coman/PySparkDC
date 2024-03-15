@@ -7,8 +7,10 @@ from matplotlib.dates import DateFormatter
 from dateutil import tz
 from zoneinfo import ZoneInfo
 
-from .default_file_structures import DEFAULT_STYLE
+from .Defaults import DEFAULT_STYLE
 from . import Utils
+
+SECONDS_IN_DAY = 60*60*24
 
 class FancyPlot():
     """
@@ -403,8 +405,8 @@ class FancyPlot():
                         Specified whether the x axis is formated as datetime
         """
         if datetime_plot: # convert to mdates if datetime plot
-            new_start_x = mdates.epoch2num(start_x)
-            new_end_x = mdates.epoch2num(end_x)
+            new_start_x = mdates.num2date(start_x/SECONDS_IN_DAY)
+            new_end_x = mdates.num2date(end_x/SECONDS_IN_DAY)
         else:
             new_start_x = start_x
             new_end_x  = end_x
@@ -481,7 +483,7 @@ class FancyPlot():
                         The y data is multiplied by this number when plotting. Useful when converting units
         """
         if datetime_plot: # convert to mdates
-            new_x = mdates.epoch2num(x)
+            new_x = mdates.num2date(x/SECONDS_IN_DAY)
             date_formatter = DateFormatter(date_format, tz=tz.gettz(timezone))
             self.axs[ax_id].xaxis.set_major_formatter(date_formatter)
             plt.setp(self.axs[0].xaxis.get_majorticklabels(), rotation=70)
@@ -575,11 +577,12 @@ class FancyPlot():
 
         # fix gaps between data corresponding to different files. A NaN value is added at the end of the data corresponding to each file.
             # Otherwise, in the plot, a line will brige the gap between the data corresponding to different neighbouring files
-
-        x_data = Utils.fix_gaps_between_files(data, x_key)
+        # x_data = data.df[x_key]
+        x_data = Utils.fix_gaps_between_files(data, x_key, add_nan = False)
         if datetime_plot and x_key == 'timestamp': # convert to mdates
+            new_x = x_data
             date_formatter = DateFormatter(date_format, tz=tz.gettz(timezone))
-            new_x = mdates.epoch2num(x_data)
+            new_x = mdates.num2date(x_data/SECONDS_IN_DAY)
         else:
             new_x = x_data
 
@@ -604,7 +607,9 @@ class FancyPlot():
                     label = data.info_dict[keys[i][j]]['label']
                 else:
                     label = labels[i][j]
+                # y_data = data.df[keys[i][j]]
                 y_data = Utils.fix_gaps_between_files(data, keys[i][j], add_nan = True)
+
                 # datetime_plot is set to False in the following. This is done because x_data is already converted to mdates
                 self.plot(new_x,  y_data, ax_id = current_ax_id, scaling_x = scaling_x, scaling_y = scaling_y, color = current_color, marker = current_marker, \
                     markersize = current_markersize, linestyle = current_linestyle, linewidth = current_linewidth, label = label, datetime_plot = False)

@@ -9,6 +9,7 @@ def dim(a):
     Parameters
     ----------
     a:                  list, pandas.Series, numpy.ndarray
+
     Returns
     -------
     dim:                list
@@ -96,6 +97,7 @@ def get_concatenation_type_columns(info_dict, type):
     info_dict:          dict
     type:               ['normal'|'additive']
                         The concatenation type for which we want to obtain the keys
+
     Returns
     -------
     columns:           list
@@ -118,6 +120,7 @@ def get_keys_info_dict(info_dict):
     Parameters
     ----------
     info_dict:          dict
+
     Returns
     -------
     props:             list
@@ -169,6 +172,7 @@ def fix_gaps_between_files(data, key, add_nan = True):
 
     add_nan:            bool, default: True
                         If True, add a NaN value at the end of the data corresponding to each file. Otherwise, copy the previous value
+
     Returns
     -------
     new_x:              numpy.ndarray

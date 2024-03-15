@@ -1,32 +1,32 @@
 import numpy as np
 import pandas as pd
 
-from .default_file_structures import DEFAULT_FE_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
+from .Defaults import DEFAULT_FE_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
 from . import Data
 from . import FancyPlot
 
 class FieldEmissionData(Data):
-    def __init__(self, *args, gap = 60, current_limiting_resistor = 0):
-        """
-        Initializer for the StatusData Class
-        Parameters
-        ----------
-        df:                                 pandas.core.frame.DataFrame
-                                            The data frame.
-                                            If the argument is not present, the data object is initialized with an empty dataframe
-        info_dict:                          dict, optional
-                                            Dictionary of labels, unit and concatenation_type for the data
-                                            Example of info_dict:
-                                            {
-                                            'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
-                                            'all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'},
-                                            }
+    """
+    FieldEmissionData Class for SparkDC Data
 
-        gap:                                double, default: 60
-                                            The length of the gap between the electrodes in um
-        current_limiting_resistor:          double, default: 0
-                                            The value of the current limiting resistor used in the measurements.
-        """
+    Parameters
+    ----------
+    df:                                 pandas.core.frame.DataFrame
+                                        The data frame.
+                                        If the argument is not present, the data object is initialized with an empty dataframe
+    info_dict:                          dict, optional
+                                        Dictionary of labels, unit and concatenation_type for the data
+                                        Example of info_dict: {
+                                        'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
+                                        'all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'}}
+
+    gap:                                double, default: 60
+                                        The length of the gap between the electrodes in um
+    current_limiting_resistor:          double, default: 0
+                                        The value of the current limiting resistor used in the measurements.
+    """
+
+    def __init__(self, *args, gap = 60, current_limiting_resistor = 0):
         super().__init__(*args)
         self.gap = gap
         self.current_limiting_resistor = current_limiting_resistor
@@ -63,6 +63,7 @@ class FieldEmissionData(Data):
         color:              matplotlib color, default: None (a color is selected from the color cycle)
         label:              str, default: None
                             The labels of the Line2D plot.
+
         Returns
         -------
         fplot:  FancyPlot
@@ -98,7 +99,7 @@ class FieldEmissionData(Data):
         fplot.plot(x, y, datetime_plot = False, ax_id = ax_id, marker = marker, markersize = markersize, \
         linestyle = linestyle, linewidth = linewidth, color = color, label = label, scaling_x = scaling_x, scaling_y = 1E3)
         fplot.set_xlabel(xlabel)
-        fplot.set_axis_ylabel(0, 'Current')
+        fplot.set_axis_ylabel(0, 'Current [uA]')
         return fplot
 
     def calculate_derived_columns(self):
@@ -120,6 +121,7 @@ class FieldEmissionData(Data):
         gap = 60, current_limiting_resistor = 0):
         """
         Reads data from multiple files
+
         Parameters
         ----------
         file_paths:     str or list
