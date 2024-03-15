@@ -10,7 +10,39 @@ Welcome to PySparkDC's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-.. automodule:: FancyPlot
+.. automodule:: SparkDC.FancyPlot
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: SparkDC.Data
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+.. automodule:: SparkDC.ConditioningData
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: SparkDC.StatusData
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: SparkDC.FieldEmissionData
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: SparkDC.RGAData
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+.. automodule:: SparkDC.Utils
     :members:
     :undoc-members:
     :show-inheritance:
