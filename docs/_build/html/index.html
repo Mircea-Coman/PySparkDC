@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Welcome to PySparkDC’s documentation! &#8212; PySparkDC  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="welcome-to-pysparkdc-s-documentation">
+<h1>Welcome to PySparkDC’s documentation!<a class="headerlink" href="#welcome-to-pysparkdc-s-documentation" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-FancyPlot"></span><dl class="py class">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">FancyPlot.</span></span><span class="sig-name descname"><span class="pre">FancyPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(13,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontweight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A very fancy plotting tool used for making multiple axes plots</p>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.add_axis" title="FancyPlot.FancyPlot.add_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_axis</span></code></a>([location, offset])</p></td>
+<td><p>Add a new vertical axis to the plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.legend" title="FancyPlot.FancyPlot.legend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legend</span></code></a>([ax_id, loc])</p></td>
+<td><p>Make the legend for the plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.plot" title="FancyPlot.FancyPlot.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(x, y[, ax_id, date_format, timezone, ...])</p></td>
+<td><p>Plots the specified x and y data on the FancyPlot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.plot_data" title="FancyPlot.FancyPlot.plot_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_data</span></code></a>(data, keys[, x_key, ...])</p></td>
+<td><p>Plots the selected columns from the pandas dataframe of the Data obejct</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.send_ax_to_front" title="FancyPlot.FancyPlot.send_ax_to_front"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_ax_to_front</span></code></a>(ax_id)</p></td>
+<td><p>Set the specified matplotlib axes to the top of the other axes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_ax_zorder" title="FancyPlot.FancyPlot.set_ax_zorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ax_zorder</span></code></a>(ax_id, zorder)</p></td>
+<td><p>Sets the zorder for a specified matplotlib axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_axis_xlabel" title="FancyPlot.FancyPlot.set_axis_xlabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_axis_xlabel</span></code></a>(ax_id, xlabel)</p></td>
+<td><p>Set the x label for the specified matplotlib axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_axis_xlim" title="FancyPlot.FancyPlot.set_axis_xlim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_axis_xlim</span></code></a>(ax_id, lim)</p></td>
+<td><p>Set the limits for the x axis for the specified matplotlib axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_axis_ylabel" title="FancyPlot.FancyPlot.set_axis_ylabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_axis_ylabel</span></code></a>(ax_id, ylabel)</p></td>
+<td><p>Set the y label for the specified matplotlib axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_axis_ylim" title="FancyPlot.FancyPlot.set_axis_ylim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_axis_ylim</span></code></a>(ax_id, lim)</p></td>
+<td><p>Set the limits for the y axis for the specified matplotlib axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_axis_yscale" title="FancyPlot.FancyPlot.set_axis_yscale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_axis_yscale</span></code></a>(ax_id, scale)</p></td>
+<td><p>Set the scale type for the y scale for a specified matplotlib axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_fontsize" title="FancyPlot.FancyPlot.set_fontsize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fontsize</span></code></a>(fontsize)</p></td>
+<td><p>Set the fontsize</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_patches_invisible" title="FancyPlot.FancyPlot.set_patches_invisible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_patches_invisible</span></code></a>()</p></td>
+<td><p>Makes all matplotlib.patches invisible.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_spine_color" title="FancyPlot.FancyPlot.set_spine_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_spine_color</span></code></a>(ax_id, color)</p></td>
+<td><p>Sets the color of the spine for a specified matplotlib axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_spine_spacing" title="FancyPlot.FancyPlot.set_spine_spacing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_spine_spacing</span></code></a>(offset)</p></td>
+<td><p>Set the spacing between successive y axes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_xlabel" title="FancyPlot.FancyPlot.set_xlabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_xlabel</span></code></a>(xlabel)</p></td>
+<td><p>Set the x label for all axes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_xlim" title="FancyPlot.FancyPlot.set_xlim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_xlim</span></code></a>(lim)</p></td>
+<td><p>Set the same xlim for all matplotlib axes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_xlim_from_data" title="FancyPlot.FancyPlot.set_xlim_from_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_xlim_from_data</span></code></a>(data, x_key)</p></td>
+<td><p>Set the same xlim for all matplotlib axes from a data object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_ylabels" title="FancyPlot.FancyPlot.set_ylabels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ylabels</span></code></a>(*ylabels)</p></td>
+<td><p>Set the y labels for all axes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.set_zorder" title="FancyPlot.FancyPlot.set_zorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_zorder</span></code></a>(order)</p></td>
+<td><p>Sets the zorder for all axes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.stripe" title="FancyPlot.FancyPlot.stripe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stripe</span></code></a>(start_x, end_x[, ax_id, color, ...])</p></td>
+<td><p>Adds an axvspan between start and end</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.stripe_files" title="FancyPlot.FancyPlot.stripe_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stripe_files</span></code></a>(data[, x_key, ax_id, color, ...])</p></td>
+<td><p>Makes axvspans that separate data from different files</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FancyPlot.FancyPlot.stripe_from_data" title="FancyPlot.FancyPlot.stripe_from_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stripe_from_data</span></code></a>(data, start_i, end_i[, ...])</p></td>
+<td><p>Adds an axvspan between data.df[x_key].iloc[start_i] and data.df[x_key].iloc[end_i]</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.add_axis">
+<span class="sig-name descname"><span class="pre">add_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'right'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.add_axis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new vertical axis to the plot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>location:   [‘left’|’right’], default:’right’</strong></dt><dd><p>The location of the new axis</p>
+</dd>
+<dt><strong>offset:     float, default: 0.1</strong></dt><dd><p>The ofset of all axes, relative to the spine of the previous axis.
+Warning: All axes will be moved, such that the offset is constant for all axes</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.legend">
+<span class="sig-name descname"><span class="pre">legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'best'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.legend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the legend for the plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int, default: -1 (last axos)</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which on which the legend will be drawn</p>
+</dd>
+<dt><strong>loc:        str or pair of floats, default: rcParams[“legend.loc”] (default: ‘best’)</strong></dt><dd><p>The location of the legend.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timezone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Europe/Stockholm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markersize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'solid'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the specified x and y data on the FancyPlot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x:              np.ndarray or pandas.Series</strong></dt><dd><p>The x data</p>
+</dd>
+<dt><strong>y:              np.ndarray or pandas.Series</strong></dt><dd><p>The y data</p>
+</dd>
+<dt><strong>ax_id:          int, default = 0</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the data will be plotted</p>
+</dd>
+<dt><strong>date_format:    str, default = ‘%m-%d %H:%M:%S’</strong></dt><dd><p>The format of the data used if datetime_plot is enabled</p>
+</dd>
+<dt><strong>timezone:       str, default = ‘Europe/Stockholm’</strong></dt><dd><p>The timezone used if if datetime_plot is enabled</p>
+</dd>
+<dt><strong>datetime_plot:  bool, default: True</strong></dt><dd><p>Specified whether the x axis is formated as datetime. If the x data are already mdates, this should be set to False</p>
+</dd>
+<dt><strong>marker:         matplotlib marker, default: None</strong></dt><dd></dd>
+<dt><strong>markersize:     int, default: 5</strong></dt><dd></dd>
+<dt><strong>linestyle:      matplotlib linestyle, default: ‘solid’</strong></dt><dd></dd>
+<dt><strong>linewidth:      int, default: 2</strong></dt><dd></dd>
+<dt><strong>color:          matplotlib color, default: None (a color is selected from the color cycle)</strong></dt><dd></dd>
+<dt><strong>label:          str, default: None</strong></dt><dd><p>The label of the Line2D plot</p>
+</dd>
+<dt><strong>scaling_x:      double</strong></dt><dd><p>The x data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+<dt><strong>scaling_y:      double</strong></dt><dd><p>The y data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.plot_data">
+<span class="sig-name descname"><span class="pre">plot_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'timestamp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timezone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Europe/Stockholm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markersize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_style_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.plot_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the selected columns from the pandas dataframe of the Data obejct</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data:               Data</strong></dt><dd><p>Data object from which data can be extracted</p>
+</dd>
+<dt><strong>key:                str, list of str or list of list of str</strong></dt><dd><p>The keys corresponding to the columns to be plotted on the y axis.
+If str: The data corresponding to the key will be plotted on an axis, corresponding to ax_id
+If list of str: The data corresponding to all keys will be plotted on a single axis, corresponding to ax_id
+if list of list of str: The data corresponding to the keys from each sublist will be plotted on different axes, corresponding to ax_id</p>
+</dd>
+<dt><strong>x_key:              str, default: ‘timestamp’</strong></dt><dd><p>The key corresponding to the column to be plotted on the x axis.</p>
+</dd>
+<dt><strong>ax_id:              int or list of int, default = None</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the data will be plotted. If None, the axis used will be 0, 1, 2, 3…</p>
+</dd>
+<dt><strong>date_format:        str, default = ‘%m-%d %H:%M:%S’</strong></dt><dd><p>The format of the data used if datetime_plot is enabled</p>
+</dd>
+<dt><strong>timezone:           str, default = ‘Europe/Stockholm’</strong></dt><dd><p>The timezone used if if datetime_plot is enabled</p>
+</dd>
+<dt><strong>datetime_plot:      bool, default: True</strong></dt><dd><p>Specified whether the x axis is formated as datetime. If the x data are already mdates, this should be set to False</p>
+</dd>
+<dt><strong>marker:             matplotlib marker, default: None</strong></dt><dd></dd>
+<dt><strong>markersize:         int, default: 5</strong></dt><dd></dd>
+<dt><strong>linestyle:          matplotlib linestyle, default: ‘solid’</strong></dt><dd></dd>
+<dt><strong>linewidth:          int, default: 2</strong></dt><dd></dd>
+<dt><strong>color:              matplotlib color, default: None (a color is selected from the color cycle)</strong></dt><dd></dd>
+<dt><strong>labels:             str or list of str, default: None</strong></dt><dd><p>The labels of the Line2D plot. If None, get the labels from the info_dict of the Data object</p>
+</dd>
+<dt><strong>scaling_x:          double</strong></dt><dd><p>The x data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+<dt><strong>scaling_y:          double</strong></dt><dd><p>The y data is multiplied by this number when plotting. Useful when converting units</p>
+</dd>
+<dt><strong>use_style_dict:     bool,   default: True</strong></dt><dd><p>If true, the proprieties of the plot will be derived from the provided style_dict</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.send_ax_to_front">
+<span class="sig-name descname"><span class="pre">send_ax_to_front</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.send_ax_to_front" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the specified matplotlib axes to the top of the other axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis which will be set on top</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_ax_zorder">
+<span class="sig-name descname"><span class="pre">set_ax_zorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zorder</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_ax_zorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the zorder for a specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the zorder will be changed</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_axis_xlabel">
+<span class="sig-name descname"><span class="pre">set_axis_xlabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_axis_xlabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the x label for the specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the xlabel will be changed</p>
+</dd>
+<dt><strong>xlabel:     str</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_axis_xlim">
+<span class="sig-name descname"><span class="pre">set_axis_xlim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_axis_xlim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the limits for the x axis for the specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the xlim will be set</p>
+</dd>
+<dt><strong>lim:        [float, float]</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_axis_ylabel">
+<span class="sig-name descname"><span class="pre">set_axis_ylabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_axis_ylabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the y label for the specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the ylabel will be changed</p>
+</dd>
+<dt><strong>ylabel:     str</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_axis_ylim">
+<span class="sig-name descname"><span class="pre">set_axis_ylim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_axis_ylim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the limits for the y axis for the specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the ylim will be set</p>
+</dd>
+<dt><strong>lim:        [float, float]</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_axis_yscale">
+<span class="sig-name descname"><span class="pre">set_axis_yscale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_axis_yscale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the scale type for the y scale for a specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the yscale will be set</p>
+</dd>
+<dt><strong>scale:      {“linear”, “log”, “symlog”, “logit”, …}</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_fontsize">
+<span class="sig-name descname"><span class="pre">set_fontsize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fontsize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_fontsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the fontsize</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fontsize:   int</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_patches_invisible">
+<span class="sig-name descname"><span class="pre">set_patches_invisible</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_patches_invisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes all matplotlib.patches invisible. Useful when changing the order of the axes. It is called automatically when set_zorder() is called</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_spine_color">
+<span class="sig-name descname"><span class="pre">set_spine_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_spine_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the color of the spine for a specified matplotlib axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_id:      int</strong></dt><dd><p>The index in the axs list of the matplotlib axis for which the color will be changed</p>
+</dd>
+<dt><strong>color:      any matplotlib color</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_spine_spacing">
+<span class="sig-name descname"><span class="pre">set_spine_spacing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_spine_spacing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spacing between successive y axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>offset:     float</strong></dt><dd><p>The spacing of all axes, relative to the spine of the previous axis.
+Warning: All axes will be moved, such that the offset is constant for all axes</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_xlabel">
+<span class="sig-name descname"><span class="pre">set_xlabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xlabel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_xlabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the x label for all axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>xlabel:   str</strong></dt><dd><p>All axes will have the same xlabel</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_xlim">
+<span class="sig-name descname"><span class="pre">set_xlim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_xlim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the same xlim for all matplotlib axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>lim:        [float, float]</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_xlim_from_data">
+<span class="sig-name descname"><span class="pre">set_xlim_from_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_xlim_from_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the same xlim for all matplotlib axes from a data object. This is equivalent to FancyPlot.set_xlim([data.df[x_key]min(), data.df[x_key]max()])</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data:       Data</strong></dt><dd><p>The data object from which the limits will be extracted</p>
+</dd>
+<dt><strong>x_key:      str</strong></dt><dd><p>The column used for the x data on the plot</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_ylabels">
+<span class="sig-name descname"><span class="pre">set_ylabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">ylabels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_ylabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the y labels for all axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>*ylabels:   str</strong></dt><dd><p>Example: set_ylabels(‘Electric Field’, ‘Temperature’, ‘Number of Breakdowns’)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.set_zorder">
+<span class="sig-name descname"><span class="pre">set_zorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.set_zorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the zorder for all axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>oder:       list of int</strong></dt><dd><p>The order for each matplotlib axis in the axs list</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.stripe">
+<span class="sig-name descname"><span class="pre">stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.9'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.stripe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an axvspan between start and end</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data:       Data</strong></dt><dd><p>The data object used in the plot</p>
+</dd>
+<dt><strong>start:      np.ndarray or double</strong></dt><dd><p>The start of the axvspan</p>
+</dd>
+<dt><strong>end:        np.ndarray or double</strong></dt><dd><p>The end of the axvspan</p>
+</dd>
+<dt><strong>ax_id:          int, default = 0</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the axvspan will be drawn</p>
+</dd>
+<dt><strong>color:          matplotlib color, default: ‘0.9’ (grey)</strong></dt><dd><p>The facecolor of the axvspan</p>
+</dd>
+<dt><strong>datetime_plot:  bool, default: False</strong></dt><dd><p>Specified whether the x axis is formated as datetime</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.stripe_files">
+<span class="sig-name descname"><span class="pre">stripe_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'timestamp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.9'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sec_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.stripe_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes axvspans that separate data from different files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data:       Data</strong></dt><dd><p>The data object used in the plot</p>
+</dd>
+<dt><strong>ax_id:          int, default = 0</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the axvspan will be drawn</p>
+</dd>
+<dt><strong>x_key:          str, default = ‘timestamp’</strong></dt><dd><p>The column used for the x axis</p>
+</dd>
+<dt><strong>color:          matplotlib color, default: ‘0.9’ (grey)</strong></dt><dd><p>The facecolor of the odd axvspans</p>
+</dd>
+<dt><strong>sec_color:      matplotlib color, default: ‘1.0’ (white)</strong></dt><dd><p>The facecolor of the even axvspans</p>
+</dd>
+<dt><strong>datetime_plot:  bool, default: False</strong></dt><dd><p>Specified whether the x axis is formated as datetime</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FancyPlot.FancyPlot.stripe_from_data">
+<span class="sig-name descname"><span class="pre">stripe_from_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'timestamp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.9'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FancyPlot.FancyPlot.stripe_from_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an axvspan between data.df[x_key].iloc[start_i] and data.df[x_key].iloc[end_i]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data:       Data</strong></dt><dd><p>The data object used in the plot</p>
+</dd>
+<dt><strong>start_i:    int</strong></dt><dd><p>The index from which to start the axvspan</p>
+</dd>
+<dt><strong>end_i:      int</strong></dt><dd><p>The index at which the axvspan ends</p>
+</dd>
+<dt><strong>x_key:          str, default = ‘timestamp’</strong></dt><dd><p>The column used for the x axis</p>
+</dd>
+<dt><strong>ax_id:          int, default = 0</strong></dt><dd><p>The index of the matplotlib axes in the axs list on which the axvspan will be drawn</p>
+</dd>
+<dt><strong>color:          matplotlib color, default: ‘0.9’ (grey)</strong></dt><dd><p>The facecolor of the axvspan</p>
+</dd>
+<dt><strong>datetime_plot:  bool, default: False</strong></dt><dd><p>Specified whether the x axis is formated as datetime</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">PySparkDC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2024, Mircea Coman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -4,6 +4,7 @@ from StatusData import StatusData
 from ConditioningData import ConditioningData
 from RGAData import RGAData
 from FancyPlot import FancyPlot
+from FieldEmissionData import FieldEmissionData
 
 from default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, DEFAULT_CONDITIONING_STRUCTURE, LABVIEW_TIMESTAMP_OFFSET
 
@@ -12,25 +13,46 @@ import Utils
 
 
 
+
+range = ['20231101-120000', '20231101-163000']
+
 status_folder = '/mnt/Mircea/Facultate/PhD/CryoDC/data/'
 file_RGA_1 = '/mnt/Mircea/Facultate/PhD/process_FE/Field_Emission_Nb/process_RGA/231101_heat_FE.csv'
-range = ['20231101-120000', '20231101-163000']
+FE_folder = '/mnt/Mircea/Facultate/PhD/FieldEmission/heinzinger_ramp/'
+file_FE_constant = [
+    FE_folder+'heinz_ramp_20231101-125248.dat',
+    FE_folder+'heinz_ramp_20231101-150122.dat'
+]
+
+file_FE_1 = FE_folder + 'heinz_ramp_20231101-112443.dat'
+file_FE_2 = FE_folder + 'heinz_ramp_20231101-172458.dat'
+
 
 rga_data = RGAData.read_from_file(file_RGA_1)
 rga_data.remove_data_datetime_range(range)
 
 status_data = StatusData.read_from_folder_between_datetimes(status_folder, range)
+FE_data = FieldEmissionData.read_from_files(file_FE_constant, skiprows = 6, current_limiting_resistor = 100E3, gap = 66)
 
-# print(Utils.dim([['sjvdjsn']]))
-# print(rga_data.df.pressure_mbar)
+fplot = FancyPlot(n_ax = 3, fontsize = 15, style_dict = None)
+status_data.plot(['temp_A', 'temp_B'], labels = ['Cathode Temperature', 'Anode Temperature'], fplot = fplot, ax_id = 1, color = 'k', linestyle = ['solid', 'dotted'])
+rga_data.plot_masses([2, 18], key = 'pressure_mbar', ax_id = 0, fplot = fplot, scaling_y = 1E9)
+FE_data.plot('current', color = '0.6', fplot = fplot, ax_id = 2, scaling_y = 1E3)
 
-fplot = FancyPlot(n_ax = 2, fontsize = 15)
-status_data.plot(['temp_A', 'temp_B'], date_format = "%m-%d-%Y %H:%M:%S", labels = ['Cathode Temperature', 'Anode Temperature'], fplot = fplot, ax_id = 1, color = 'k', linestyle = ['solid', 'dotted'], use_style_dict = False)
-rga_data.plot_masses([2, 18], key = 'pressure_mbar', ax_id = 0, fplot = fplot, scaling_y = 1E9, date_format = "%m-%d-%Y %H:%M:%S")
-fplot.set_ylabels(r'Partial Pressure [$10^{-9} mbar$]', 'Temperature [K]')
+fplot.set_spine_color(2, '0.6')
+fplot.set_ylabels(r'Partial Pressure [$10^{-9} mbar$]', 'Temperature [K]', 'Current [uA]')
 fplot.legend(loc='upper center')
-fplot.set_zorder([1, 0])
+fplot.set_zorder([2, 1, 0])
 plt.show()
+
+# FE_data_1 = FieldEmissionData.read_from_files(file_FE_1, current_limiting_resistor = 100E3, gap = 66,  skiprows = 6)
+# FE_data_2 = FieldEmissionData.read_from_files(file_FE_2, current_limiting_resistor = 100E3, gap = 66, skiprows = 6)
+#
+# ivplot = FE_data_1.plot_IV(x_key = 'true_field', FN_plot = True, marker = '.', label = 'Before Heating')
+# FE_data_2.plot_IV(x_key = 'true_field', FN_plot = True, fplot = ivplot, marker = '.', label = 'After Heating')
+# plt.legend()
+# plt.show()
+
 
 # folder = '/media/mircea/AAAAAAAAAAA/conditioning data/'
 # electrode  = '066_RFQ_Nb_rm1'

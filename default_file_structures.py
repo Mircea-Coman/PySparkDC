@@ -127,3 +127,9 @@ DEFAULT_RGA_STRUCTURE = {
     'mass':                {'col': 3,  'label':  'Pulses',                         'unit': 'amu'},
     'pressure_torr':       {'col': 4,  'label':  'Pressure',                       'unit': 'torr'},
 }
+
+DEFAULT_FE_STRUCTURE = {
+    'voltage':                    {'col': 6,  'label':  'Voltage',                              'unit': 'kV'},
+    'current':                    {'col': 7,  'label':  'Current',                              'unit': 'mA'},
+    'timestamp':            {'col': 9,  'label':  'Relative Time',                 'unit': 's'},
+}

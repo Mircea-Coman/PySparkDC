@@ -21,19 +21,13 @@ class Data:
         df: pandas.core.frame.DataFrame
             The data frame.
             If the argument is not present, the data object is initialized with an empty dataframe
-        label_dict: dict, optional
-            Dictionary of labels for each data column.
-            If not present, it is creared from the structure argument
-        unit_dict: dict, optional
-            Dictionary of units for each data column.
-            If not present, it is created from the structure argument
-        concatenation_type_dict: dict, optional
-            Dictionary of concatenation type for each data column. Valid values: normal, additive.
-            If not present, it is creared from the structure argument
-
-        structure: numpy.ndarray, optional
-            The structure of the data. For each data field, the structure is the following: [column name, full label, unit, concatenation type]
-            If label_dict, unit_dict, and concatenation_type_dict are present, this argument is ignored
+        info_dict: dict, optional
+            Dictionary of labels, unit and concatenation_type for the data
+            Example of info_dict:
+            {
+                'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
+                'all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'},
+            }
         """
         self.df = df
         self.info_dict = info_dict
@@ -46,50 +40,17 @@ class Data:
     #         raise AttributeError(f"'Data' object has no attribute '{key}'")
 
 
-    def __create_dictionaries__(self, structure):
-        """
-        Creates the dictionaries from the structure array
-        Parameters
-        ----------
-        structure: numpy.ndarray
-            The structure of the data. For each data field, the structure is the following: [key, full label, unit, concatenation type]
-
-        Returns
-        -------
-        label_dict: dict
-            Dictionary of labels for each data column.
-        unit_dict: dict
-            Dictionary of units for each data column.
-        concatenation_type_dict: dict
-            Dictionary of concatenation type for each data column. Valid values: normal, additive.
-        """
-
-        unit_dictionary = {}
-        label_dictionary = {}
-        concatenation_type_dictionary = {}
-        for i in np.arange(structure.shape[0]):
-            key = structure[i, 0]
-            label = structure[i, 1]
-            unit = structure[i, 2]
-            concatenation_type = structure[i, 3]
-            label_dictionary[key] = label
-            unit_dictionary[key] = unit
-            concatenation_type_dictionary[key] = concatenation_type
-        return label_dictionary, unit_dictionary, concatenation_type_dictionary
-
     @property
     def file_separators(self):
         """
-        Returns a numpy array of size n_files * 2.
+        Get the indices corresponding to the start and end of each run. Returns a numpy array of size n_files * 2.
 
         Returns
         -------
         file_separators: numpy.ndarray
                          file_separators[i, 0] - the index corresponding to the start of data for each file
                          file_separators[i, 1] - the index corresponding to the end of data for each file
-                         Warning: Data from a file is contained until file_separators[i, 1] - 1. It is done like this in order to be able to select data like df[start:end]
         """
-
         files = self.df.file.unique()
         n_files = len(files)
         file_separators = np.empty([n_files, 2], dtype = int)
@@ -105,43 +66,66 @@ class Data:
 
     def plot(self, keys, x_key = 'timestamp', datetime_plot = True, date_format = "%m-%d %H:%M:%S", timezone = 'Europe/Stockholm', \
     fplot = None, ax_id = None, figsize = (13, 8), marker = None, markersize = 5, linestyle = '-', linewidth = 2, color = None, \
-    labels = None, fontsize = 12, fontweight = 'normal', use_style_dict = True, style_dict = DEFAULT_STYLE, scaling_y = 1):
+    labels = None, fontsize = 12, fontweight = 'normal', use_style_dict = True, style_dict = DEFAULT_STYLE, scaling_x = 1, scaling_y = 1):
         """
-        Plot the data at the selected key. The function returns the matplotlib.axes on which it was ploted
+        Plots the selected columns from the pandas dataframe of the Data obejct
 
         Parameters
         ----------
-        key:                str
-                            The key corresponding to the column to be plotted on the y axis
+        key:                str, list of str or list of list of str
+                            The keys corresponding to the columns to be plotted on the y axis.
+                            If str: The data corresponding to the key will be plotted on an axis, corresponding to ax_id
+                            If list of str: The data corresponding to all keys will be plotted on a single axis, corresponding to ax_id
+                            if list of list of str: The data corresponding to the keys from each sublist will be plotted on different axes, corresponding to ax_id
 
         x_key:              str, default: 'timestamp'
                             The key corresponding to the column to be plotted on the x axis.
-        datetime_plot:      boolean, default: True
-                            Plots formatted datetimes on x axis if x_key is 'timestamp'
-        date_format:        boolean, default: '%m-%d %H:%M:%S'
-                            Format used to format the datetimes
-        timezone:           str, default: 'Europe/Stockholm'
-                            Timezone used to format the datetimes
-        ax:                 {None, matplotlib.axes}, default: None
-                            The matplotlib axes on which to plot. If None, a new figure is created
-        marker:             marker style string, default: None
-        linestyle:          {'-', '--', '-.', ':', '', (offset, on-off-seq), ...}, default: '-'
-        color:              default: 'k'
-        label:              str, default: None
-                            The label of the plot
-        scaling_factor_y:   float, default: 1.0
-                            The value plotted on the y axis will be multiplied by this number
+        fplot               FancyPlot, default: None
+                            The fancy plot on which the plot will be drawn. If None, a new one will be created with figsize
+        figsize:            tuple, default: (13, 8)
+                            The size of the figure in inches. Used only when fplot is None
+        fontsize:           int, default: 12
+                            Dictionary of units for each data column.
+                            If not present, it is created from the structure argument
+        fontweight:         ['normal'|'bold'|'heavy'|'light'|'ultrabold'|'ultralight'], default: 'normal'
+        ax_id:              int or list of int, default = None
+                            The index of the matplotlib axes in the axs list on which the data will be plotted. If None, the axis used will be 0, 1, 2, 3...
+        date_format:        str, default = '%m-%d %H:%M:%S'
+                            The format of the data used if datetime_plot is enabled
+        timezone:           str, default = 'Europe/Stockholm'
+                            The timezone used if if datetime_plot is enabled
+        datetime_plot:      bool, default: True
+                            Specified whether the x axis is formated as datetime. If the x data are already mdates, this should be set to False
+        marker:             matplotlib marker, default: None
+        markersize:         int, default: 5
+        linestyle:          matplotlib linestyle, default: 'solid'
+        linewidth:          int, default: 2
+        color:              matplotlib color, default: None (a color is selected from the color cycle)
+        labels:             str or list of str, default: None
+                            The labels of the Line2D plot. If None, get the labels from the info_dict of the Data object
+        scaling_x:          double
+                            The x data is multiplied by this number when plotting. Useful when converting units
+        scaling_y:          double
+                            The y data is multiplied by this number when plotting. Useful when converting units
+        style_dict:         dict,   default: DEFAULT_STYLE
+                            The style dictionary used
+        use_style_dict:     bool,   default: True
+                            If true, the proprieties of the plot will be derived from the provided style_dict
 
         Returns
         -------
-        ax: matplotlib.axes
-            The matplotlib axes on which the data was plotted
+        fplot:  FancyPlot
+                The FancyPlot on which the data was plotted
         """
+        if len(Utils.dim(keys)) == 0:
+            n_ax = 0
+        else:
+            n_ax = Utils.dim(keys)[0]
         if fplot is None:
-            fplot = FancyPlot(n_ax = Utils.dim(keys)[0], figsize = figsize, style_dict = DEFAULT_STYLE, fontweight = fontweight, fontsize = fontsize)
+            fplot = FancyPlot(n_ax = n_ax, figsize = figsize, style_dict = DEFAULT_STYLE, fontweight = fontweight, fontsize = fontsize)
         fplot.plot_data(self, keys,  x_key = x_key, datetime_plot = datetime_plot, date_format = date_format, timezone = timezone, \
                 ax_id = ax_id, marker = marker, markersize = markersize, linestyle = linestyle, linewidth = linewidth, color = color, labels = labels, \
-                use_style_dict = use_style_dict, scaling_y = scaling_y)
+                use_style_dict = use_style_dict, scaling_x = scaling_x, scaling_y = scaling_y)
         return fplot
 
 
@@ -224,17 +208,17 @@ class Data:
         Reads data from multiple files
         Parameters
         ----------
-        file_paths:     list
+        file_paths:     str or list
                         The filepaths from where the data will be read
-        header:         int, default: 0
+        header:         int, default: None
                         Row number(s) containing column labels and marking the start of the data (zero-indexed).
         delimiter:      char, default: '\t'
                         The delimiter used in the file.
-        structure:      numpy array, optional
-                        The structure of the data. For each data field, the structure is the following: [column name, full label, unit, concatenation type]
+        info_dict:      dict, optional
+                        The info_dict of the file
         engine:         str, default: 'c'
                         Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.
-        skip_rows:      int, default: 0
+        skiprows:       int, default: 0
                         Skips the first N rows when reading the file
         Returns
         -------
@@ -242,25 +226,38 @@ class Data:
                 Data object corresponding to the data read from the file_paths
         """
         Data.__check_and_fill_info_dict__(info_dict)
-        dfs = []
+
+        dfs = [] # create list of dataframes, corresponding to each file
+
+        # if filepaths is just a str, convert to list: [file_paths]
+        dim_file_paths = Utils.dim(file_paths)
+        if(len(dim_file_paths)) == 0:
+            file_paths = [file_paths]
+
         n_files = len(file_paths)
         i = 0
         prev_file_end_index = 0
         for file_path in file_paths:
-            keys = np.array(Utils.get_keys_info_dict(info_dict))
-            used_cols = np.array(Utils.get_from_info_dict(info_dict, 'col'))
+            keys = np.array(Utils.get_keys_info_dict(info_dict)) #get the keys from the info_dict
+            used_cols = np.array(Utils.get_from_info_dict(info_dict, 'col'))  # get the columns from the info_dict
 
+            # read all the columns
             full_df = pd.read_csv(file_path, engine = engine, index_col=False, header = header, skiprows = skiprows, delimiter = delimiter)
 
+            #   filter and use only the columns from the info_dict
             mask = np.array(used_cols)<full_df.shape[1]
             new_df = full_df.iloc[:, used_cols[mask]]
             new_df.columns = keys[mask]
 
+            # get the additive columns
             additive_columns = Utils.get_concatenation_type_columns(info_dict, 'additive')
 
+            # process the additive columns
             if i != 0 and additive_columns is not []:
-                last_values_additive_columns = dfs[i-1][additive_columns].iloc[-1]
-                new_df[additive_columns] += last_values_additive_columns
+                last_values_additive_columns = dfs[i-1][additive_columns].iloc[-1] #the value in the previous file
+                new_df[additive_columns] += last_values_additive_columns    #add it to the data from the current file
+
+            # add at the end new columns corresponding to the filename and the number of the file
             col_len = new_df.shape[1]
             new_df.insert(col_len, "file", file_path, True)
             new_df.insert(col_len+1, "file_id", i, True)
@@ -269,12 +266,21 @@ class Data:
             n_points = new_df.shape[0]
             prev_file_end_index = prev_file_end_index + n_points
             i += 1
-        df = pd.concat(dfs, axis=0, ignore_index=True)
+        df = pd.concat(dfs, axis=0, ignore_index=True) # concatenate the data frames
 
         return Data(df, info_dict)
 
     @staticmethod
     def __check_and_fill_info_dict__(info_dict):
+        """
+        Completes the info_dict, if labels, units or concatenation_type are not available
+        Defaults: {label: '', unit: '', concatenation_type: 'normal'}
+
+        Parameters
+        ----------
+        info_dict:      dict
+                        The info_dict of the file
+        """
         for item in info_dict.items():
             key = item[0]
             subdict = item[1]

@@ -3,19 +3,54 @@ import numpy as np
 import pandas as pd
 
 def dim(a):
+    """
+    Gets the dimesion of a python list, a pandas.Series or a numpy.ndarray
+
+    Parameters
+    ----------
+    a:                  list, pandas.Series, numpy.ndarray
+    Returns
+    -------
+    dim:                list
+                        The dimensions of the list/array/Series
+    """
     if not type(a) == np.ndarray and not type(a) == pd.core.series.Series:
         if not type(a) == list:
             return []
         return [len(a)] + dim(a[0])
     else:
         return list(a.shape)
-def len_of_sublists(array):
+
+def len_of_sublists(list):
+    """
+    For a list of lists, return the dimension of each sublist
+
+    Parameters
+    ----------
+    list:               list
+
+    Returns
+    -------
+    length:             list
+                        The dimension of each sublist in list
+    """
     length = []
-    for i in range(0, len(array)):
-        length.append(len(array[i]))
+    for i in range(0, len(list)):
+        length.append(len(list[i]))
     return length
 
 def duplicate_like(array, item):
+    """
+    Given a list, it returns a new list with the same shape, but filled with the requested item
+
+    Parameters
+    ----------
+    array:              list
+
+    Returns
+    -------
+    new_array:          list
+    """
     new_array = copy.deepcopy(array)
     for i in range(0, len(array)):
         sub_array = array[i]
@@ -24,6 +59,19 @@ def duplicate_like(array, item):
     return new_array
 
 def fix_parameter_list(keys, param_array):
+    """
+    The parameter lists, such as the colors or the linestyles can be given in different formats then the keys corresponding to the data to be plotted.
+    This function attemps to cast the parameter array in the same shape as the keys array
+
+    Parameters
+    ----------
+    keys:              str, list of str, or list of list of str
+    param_array:       str, list of str, or list of list of str
+
+    Returns
+    -------
+    new_param_array:   list of list of str
+    """
     keys_dim = dim(keys)
     param_dim = dim(param_array)
     if len(param_dim) == 0 and len(keys_dim) != 0:
@@ -40,6 +88,19 @@ def fix_parameter_list(keys, param_array):
 
 
 def get_concatenation_type_columns(info_dict, type):
+    """
+    Returns the keys from info_dict which have the concatenation_type set to a specified type. Warning: It requires a completely filled dictionary!
+
+    Parameters
+    ----------
+    info_dict:          dict
+    type:               ['normal'|'additive']
+                        The concatenation type for which we want to obtain the keys
+    Returns
+    -------
+    columns:           list
+                       list of columns that have the concatenation_type of the specified type
+    """
     columns = []
     for item in info_dict.items():
         key = item[0]
@@ -47,19 +108,44 @@ def get_concatenation_type_columns(info_dict, type):
         if 'concatenation_type' in subdict:
             if subdict['concatenation_type'] == type: columns.append(key)
         else:
-            raise ValueError('concatenation_type not find in dictionary!')
+            raise ValueError('concatenation_type not found in dictionary!')
     return columns
 
 def get_keys_info_dict(info_dict):
-    props = []
+    """
+    Returns all the keys from a specified dictionary
+
+    Parameters
+    ----------
+    info_dict:          dict
+    Returns
+    -------
+    props:             list
+                       list of keys from dictionary
+    """
+    keys = []
     for item in info_dict.items():
         key = item[0]
         subdict = item[1]
-        props.append(key)
-    return props
+        keys.append(key)
+    return keys
 
 
 def get_from_info_dict(info_dict, property):
+    """
+    Returns the values from a dictionary of subdictionaries
+
+    Parameters
+    ----------
+    info_dict:          dict
+    property:           str
+
+    Returns
+    -------
+    props:             list
+                       list of values
+    """
+
     props = []
     for item in info_dict.items():
         key = item[0]
@@ -102,10 +188,3 @@ def fix_gaps_between_files(data, key, add_nan = True):
             else:
                 new_x[end+i] = x[end-1]
     return new_x
-
-# arr = ['a', 'b', 'c']
-# duplicate_like(arr, '1')
-# arr = [['a', 'b', 'c'], ['d', 'e', 'f', 'g']]
-# print(len_of_sublists(arr))
-# print(dim(arr))
-# print(duplicate_like(arr, '1'))

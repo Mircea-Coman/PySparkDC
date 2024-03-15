@@ -12,12 +12,49 @@ from default_file_structures import DEFAULT_TEMPERATURE_STRUCTURE, LABVIEW_TIMES
 from Data import Data
 
 class StatusData(Data):
-    def __init__(self, *args, structure = DEFAULT_TEMPERATURE_STRUCTURE):
+    def __init__(self, *args):
+        """
+        Initializer for the StatusData Class
+        Parameters
+        ----------
+        df: pandas.core.frame.DataFrame
+            The data frame.
+            If the argument is not present, the data object is initialized with an empty dataframe
+        info_dict: dict, optional
+            Dictionary of labels, unit and concatenation_type for the data
+            Example of info_dict:
+            {
+                'temp':       {'col': 0, 'label': 'Temperature',   'unit':   'K',   'concatenation_type': 'normal'},
+                'all_pulses': {'col': 1, 'label': 'All Pulses',    'unit':   '',    'concatenation_type': 'additive'},
+            }
+
+        """
         super().__init__(*args)
 
 
     @staticmethod
     def read_from_files(file_paths, header = None, delimiter = '\t', engine = 'c', skiprows = 0, info_dict = DEFAULT_TEMPERATURE_STRUCTURE):
+        """
+        Reads data from multiple files
+        Parameters
+        ----------
+        file_paths:     str or list
+                        The filepaths from where the data will be read
+        header:         int, default: 0
+                        Row number(s) containing column labels and marking the start of the data (zero-indexed).
+        delimiter:      char, default: '\t'
+                        The delimiter used in the file.
+        info_dict:      dict, optional
+                        The info_dict of the file
+        engine:         str, default: 'c'
+                        Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.
+        skiprows:       int, default: 0
+                        Skips the first N rows when reading the file
+        Returns
+        -------
+        temp_data:      StatusData
+                        StatusData object corresponding to the data read from the file_paths
+        """
         data = Data.read_from_files(file_paths, header = header, delimiter = delimiter, engine = engine, skiprows = skiprows, info_dict = info_dict)
         temp_data = StatusData(data.df, info_dict)
         temp_data.df.loc[:, 'timestamp'] = (temp_data.df.loc[:, 'timestamp'] - LABVIEW_TIMESTAMP_OFFSET)
@@ -26,6 +63,31 @@ class StatusData(Data):
     @staticmethod
     def read_from_folder_between_timestamps(folder_path, timestamp_limits, timezone = "Europe/Stockholm",\
      descending_search = True, header = None, delimiter = '\t', skiprows = 0, engine = 'c', info_dict = DEFAULT_TEMPERATURE_STRUCTURE):
+        """
+        Reads the status data between specified timestamps from folder
+        Parameters
+        ----------
+        folder_path:        str
+                            The path of the folder containing the CryoDC status data
+        timestamp_limits:   list of double
+                            Read the data between timestamp_limits[0] and timestamp_limits[1]
+        timezone:           str, default: 'Europe/Stockholm'
+                            The timezone corresponding to the datetime in the name of the files
+        header:             int, default: None
+                            Row number(s) containing column labels and marking the start of the data (zero-indexed).
+        delimiter:          char, default: '\t'
+                            The delimiter used in the file.
+        info_dict:          dict, default: DEFAULT_TEMPERATURE_STRUCTURE
+                            The info_dict of the file
+        engine:             str, default: 'c'
+                            Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.
+        skiprows:           int, default: 0
+                            Skips the first N rows when reading the file
+        Returns
+        -------
+        data:               StatusData
+                            StatusData object corresponding to the data read from the file_paths
+        """
         files = os.listdir(folder_path) # get all files from specified folder
 
         n_files = len(files)
@@ -79,6 +141,33 @@ class StatusData(Data):
     @staticmethod
     def read_from_folder_between_datetimes(folder_path, datetime_limits, time_format = '%Y%m%d-%H%M%S', timezone = "Europe/Stockholm", \
     descending_search = True, header = None, delimiter = '\t', skiprows = 0, engine = 'c', info_dict = DEFAULT_TEMPERATURE_STRUCTURE):
+        """
+        Reads the status data between specified datetimes from folder
+        Parameters
+        ----------
+        folder_path:        str
+                            The path of the folder containing the CryoDC status data
+        datetime_limits:    list of str
+                            Read the data between datetime_limits[0] and datetime_limits[1]
+        time_format:        str, default: '%Y%m%d-%H%M%S'
+                            The time format string used to specify the datetime_limits
+        timezone:           str, default: 'Europe/Stockholm'
+                            The timezone corresponding to the datetime in the name of the files and to the datetimes in datetime_limits
+        header:             int, default: None
+                            Row number(s) containing column labels and marking the start of the data (zero-indexed).
+        delimiter:          char, default: '\t'
+                            The delimiter used in the file.
+        info_dict:          dict, default: DEFAULT_TEMPERATURE_STRUCTURE
+                            The info_dict of the file
+        engine:             str, default: 'c'
+                            Parser engine to use. The C and pyarrow engines are faster, while the python engine is currently more feature-complete. Multithreading is currently only supported by the pyarrow engine.
+        skiprows:           int, default: 0
+                            Skips the first N rows when reading the file
+        Returns
+        -------
+        data:               StatusData
+                            StatusData object corresponding to the data read from the file_paths
+        """
         tzinfo = ZoneInfo(timezone)
         timestamp_limit_lower = time.mktime(datetime.datetime.strptime(datetime_limits[0], time_format).replace(tzinfo=tzinfo).timetuple())
         timestamp_limit_upper = time.mktime(datetime.datetime.strptime(datetime_limits[1], time_format).replace(tzinfo=tzinfo).timetuple())
